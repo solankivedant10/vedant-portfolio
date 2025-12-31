@@ -2,7 +2,6 @@
 
 import { useEffect } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { getCalApi } from "@calcom/embed-react"
 import { Calendar, ArrowRight, Github, Linkedin, Twitter, Mail, FileText } from 'lucide-react'
@@ -82,7 +81,7 @@ export function Hero() {
                             </Button>
 
                             <Button variant="outline" asChild className="gap-2">
-                                <Link href="/projects">
+                                <Link href="/#projects">
                                     View my work
                                     <ArrowRight className="w-4 h-4" />
                                 </Link>

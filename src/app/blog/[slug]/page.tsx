@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { ArrowLeft, Calendar, Clock } from 'lucide-react'
+import { Calendar, Clock } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Separator } from '@/components/ui/separator'
@@ -27,16 +27,6 @@ export default async function BlogPostPage({ params }: PageProps) {
 
     return (
         <div className="min-h-screen">
-            {/* Back Button */}
-            <div className="fixed top-6 left-6 z-50">
-                <Button variant="ghost" asChild className="gap-2">
-                    <Link href="/blog">
-                        <ArrowLeft className="w-4 h-4" />
-                        Back to Blog
-                    </Link>
-                </Button>
-            </div>
-
             <main className="pt-24 pb-20 px-6">
                 <article className="max-w-3xl mx-auto">
                     {/* Header */}

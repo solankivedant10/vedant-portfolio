@@ -3,7 +3,7 @@
 import { useRef } from 'react'
 import Link from 'next/link'
 import { motion, useInView } from 'framer-motion'
-import { ArrowLeft, Download, ExternalLink, Github } from 'lucide-react'
+import { Download, ExternalLink, Github } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
@@ -42,16 +42,6 @@ export default function AboutPage() {
 
     return (
         <div className="min-h-screen">
-            {/* Back Button */}
-            <div className="fixed top-6 left-6 z-50">
-                <Button variant="ghost" asChild className="gap-2">
-                    <Link href="/">
-                        <ArrowLeft className="w-4 h-4" />
-                        Back
-                    </Link>
-                </Button>
-            </div>
-
             <main className="pt-24 pb-20 px-6">
                 <div className="max-w-4xl mx-auto">
                     {/* Bio Section */}
