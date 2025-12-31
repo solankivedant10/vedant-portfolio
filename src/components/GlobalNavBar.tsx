@@ -6,10 +6,10 @@ import { NavBar } from "@/components/ui/tubelight-navbar"
 const navItems = [
     { name: 'Home', url: '/', icon: Home },
     { name: 'About', url: '/about', icon: User },
-    { name: 'Projects', url: '/#projects', icon: Briefcase },
+    { name: 'Projects', url: '/projects', icon: Briefcase },
     { name: 'Garage', url: '/garage', icon: Code },
     { name: 'Blog', url: '/blog', icon: PenTool },
-    { name: 'Contact', url: '/#contact', icon: Phone }
+    { name: 'Contact', url: '/contact', icon: Phone }
 ]
 
 export function GlobalNavBar() {
