@@ -15,6 +15,21 @@ export const ContactSection = () => {
         projectType: [] as string[],
     });
 
+    const [bubbles, setBubbles] = React.useState<Array<React.CSSProperties>>([]);
+
+    React.useEffect(() => {
+        setBubbles(
+            Array.from({ length: 10 }).map(() => ({
+                width: `${Math.random() * 50 + 20}px`,
+                height: `${Math.random() * 50 + 20}px`,
+                left: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 5}s`,
+                animationDuration: `${Math.random() * 10 + 10}s`,
+                top: `${Math.random() * 100}%`,
+            }))
+        );
+    }, []);
+
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
         setFormData((prev) => ({ ...prev, [name]: value }));
@@ -46,18 +61,11 @@ export const ContactSection = () => {
             {/* Background & Bubbles */}
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,var(--tw-gradient-stops))] from-primary/10 via-background to-background" />
             <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-                {Array.from({ length: 10 }).map((_, i) => (
+                {bubbles.map((style, i) => (
                     <div
                         key={i}
                         className="absolute bg-primary/10 rounded-full animate-bubble opacity-0"
-                        style={{
-                            width: `${Math.random() * 50 + 20}px`,
-                            height: `${Math.random() * 50 + 20}px`,
-                            left: `${Math.random() * 100}%`,
-                            animationDelay: `${Math.random() * 5}s`,
-                            animationDuration: `${Math.random() * 10 + 10}s`,
-                            top: `${Math.random() * 100}%`,
-                        }}
+                        style={style}
                     />
                 ))}
             </div>
