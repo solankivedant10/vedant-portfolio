@@ -3,8 +3,7 @@
 import { useEffect, useState, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { ActivityCalendar } from 'react-activity-calendar'
-import { Tooltip } from '@/components/ui/tooltip'
-import { TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
+
 import { Github, Flame, Calendar, TrendingUp } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
 
@@ -14,10 +13,7 @@ interface ContributionDay {
     level: 0 | 1 | 2 | 3 | 4
 }
 
-interface GitHubStats {
-    totalContributions: number
-    contributions: ContributionDay[]
-}
+
 
 const GITHUB_USERNAME = 'ANIKETHPAWAR'
 

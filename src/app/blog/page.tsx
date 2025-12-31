@@ -6,7 +6,7 @@ import { motion, useInView } from 'framer-motion'
 import { Calendar, Clock, ArrowRight } from 'lucide-react'
 import { Card, CardHeader, CardContent, CardFooter } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
+
 import { getAllPosts, hasPosts } from '@/lib/blog-data'
 
 export default function BlogPage() {

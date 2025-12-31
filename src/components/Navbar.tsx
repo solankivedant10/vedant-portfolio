@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { Menu, X, Github, Linkedin, Twitter, Mail } from 'lucide-react'
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet'
 import { Button } from '@/components/ui/button'
@@ -33,15 +33,22 @@ export function Navbar() {
 
     // Hydration-safe time update
     useEffect(() => {
-        setTime(new Date())
+        // Use requestAnimationFrame to avoid synchronous state update warning
+        const handle = requestAnimationFrame(() => setTime(new Date()))
         const timer = setInterval(() => setTime(new Date()), 1000)
-        return () => clearInterval(timer)
+        return () => {
+            cancelAnimationFrame(handle)
+            clearInterval(timer)
+        }
     }, [])
 
     // Close mobile menu on route change
     useEffect(() => {
-        setIsOpen(false)
-    }, [pathname])
+        if (isOpen) {
+            const handle = requestAnimationFrame(() => setIsOpen(false))
+            return () => cancelAnimationFrame(handle)
+        }
+    }, [pathname, isOpen])
 
     const formatDate = () => {
         if (!time) return ''

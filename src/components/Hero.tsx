@@ -49,7 +49,7 @@ export function Hero() {
 
                         {/* Main Heading - Large typography with gradient */}
                         <h1 className="text-5xl md:text-7xl font-bold tracking-tighter mb-6">
-                            <span className="text-muted-foreground">I'm </span>
+                            <span className="text-muted-foreground">I&apos;m </span>
                             <span className="text-white">Aniketh,</span>
                             <br />
                             <span className="bg-linear-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">

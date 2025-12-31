@@ -1,7 +1,7 @@
 'use client'
 
 import { useRef } from 'react'
-import Link from 'next/link'
+
 import { motion, useInView } from 'framer-motion'
 import { Download, ExternalLink, Github } from 'lucide-react'
 import { Button } from '@/components/ui/button'
