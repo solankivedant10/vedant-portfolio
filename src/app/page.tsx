@@ -1,28 +1,21 @@
-import { Hero } from '@/components/Hero'
-import { Experience } from '@/components/Experience'
-import GitHubHeatmap from '@/components/GitHubHeatmap'
-import { Footer } from '@/components/Footer'
-import { Separator } from '@/components/ui/separator'
+import { Header } from "@/components/Header";
+import Hero from "@/components/Hero";
+import { TechStack } from "@/components/TechStack";
 
 export default function Home() {
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
+    <main className="relative min-h-screen bg-black overflow-x-hidden">
+      {/* Header (Name + Clock) */}
+      <Header />
+
+      {/* Hero Section (Introduction + Stats) */}
       <Hero />
 
-      {/* Experience Section */}
-      <Experience />
+      {/* Tech Stack (New Grid) */}
+      <TechStack />
 
-      {/* Separator */}
-      <div className="max-w-4xl mx-auto px-6">
-        <Separator className="bg-border" />
-      </div>
-
-      {/* GitHub Heatmap */}
-      <GitHubHeatmap />
-
-      {/* Footer */}
-      <Footer />
-    </div>
-  )
+      {/* Note: Projects, Garage, Blog, and Contact are now on their own pages.
+          We do not render them here to keep the home page clean. */}
+    </main>
+  );
 }

@@ -63,6 +63,7 @@ export function Experience() {
         content: (
             <div>
                 <div className="flex flex-col gap-2 mb-4">
+                    <h2 className="text-3xl font-bold">Experience that matters.</h2>
                     <h3 className="text-2xl font-bold text-foreground">
                         {exp.company}
                     </h3>
@@ -99,11 +100,11 @@ export function Experience() {
                         Career
                     </span>
                 </div>
-                <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-                    Work Experience
+                <h2 className="text-3xl md:text-5xl font-bold mb-4 text-foreground">
+                    What I&apos;ve been up to
                 </h2>
                 <p className="text-muted-foreground max-w-xl">
-                    My professional journey and the companies I've had the privilege to work with.
+                    My professional journey and the companies I&apos;ve had the privilege to work with.
                 </p>
             </div>
 

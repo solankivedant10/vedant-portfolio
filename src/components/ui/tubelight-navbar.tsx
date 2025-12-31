@@ -1,11 +1,11 @@
 "use client"
 
-import React, { useEffect, useState } from "react"
-import { motion } from "framer-motion"
+import React from "react"
+import { motion } from "motion/react"
 import Link from "next/link"
 import { LucideIcon } from "lucide-react"
-import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
+import { usePathname } from "next/navigation"
 
 interface NavItem {
     name: string
@@ -20,71 +20,64 @@ interface NavBarProps {
 
 export function NavBar({ items, className }: NavBarProps) {
     const pathname = usePathname()
-    const [isMobile, setIsMobile] = useState(false)
-
-    useEffect(() => {
-        const handleResize = () => setIsMobile(window.innerWidth < 768)
-        handleResize()
-        window.addEventListener("resize", handleResize)
-        return () => window.removeEventListener("resize", handleResize)
-    }, [])
-
-    // Helper to determine if a tab is active
-    const isActive = (url: string) => {
-        if (url === "/" && pathname === "/") return true
-        if (url.startsWith("/#") && pathname === "/") return false // Don't highlight hash links on home unless explicitly clicked/scrolled (but for this component simpler logic is safer to avoid flashing)
-
-        // Better logic:
-        // 1. Exact match
-        if (url === pathname) return true
-        // 2. Sub-paths (e.g. /blog/post-1 matches /blog)
-        if (url !== "/" && pathname.startsWith(url) && !url.startsWith("/#")) return true
-
-        return false
-    }
 
     return (
-        <div className={cn("fixed bottom-0 sm:top-0 left-1/2 -translate-x-1/2 z-50 mb-6 sm:pt-6 pointer-events-none", className)}>
-            <div className="flex items-center gap-3 bg-background/5 border border-white/10 backdrop-blur-lg py-1 px-1 rounded-full shadow-lg pointer-events-auto">
+        <div className={cn("fixed bottom-0 sm:top-0 left-1/2 -translate-x-1/2 z-100 mb-6 sm:pt-6 w-full sm:w-auto px-4 sm:px-0", className)}>
+            <div className="flex items-center gap-1 bg-zinc-950/90 border border-white/6 backdrop-blur-md py-2 px-2 rounded-xl shadow-lg">
+
+                {/* Nav Items */}
                 {items.map((item) => {
-                    const Icon = item.icon
-                    const isTabActive = isActive(item.url)
+                    const isActive = item.url === pathname || (item.url !== "/" && pathname.startsWith(item.url));
+                    const isGarage = item.name === "Garage"
 
                     return (
                         <Link
                             key={item.name}
                             href={item.url}
                             className={cn(
-                                "relative cursor-pointer text-sm font-semibold px-6 py-2 rounded-full transition-colors",
-                                "text-foreground/80 hover:text-primary",
-                                isTabActive && "bg-muted text-primary",
+                                "relative cursor-pointer text-sm font-medium px-4 py-2 rounded-lg transition-colors",
+                                "text-zinc-400 hover:text-white",
+                                isActive && "bg-zinc-800 text-white"
                             )}
                         >
                             <span className="hidden md:inline">{item.name}</span>
                             <span className="md:hidden">
-                                <Icon size={18} strokeWidth={2.5} />
+                                <item.icon size={18} strokeWidth={2.5} />
                             </span>
-                            {isTabActive && (
+
+                            {/* Garage Emoji/Icon Decorator */}
+                            {isGarage && (
+                                <span className="ml-1 hidden md:inline-block text-xs">🛠️</span>
+                            )}
+
+                            {isActive && (
                                 <motion.div
-                                    layoutId="lamp"
-                                    className="absolute inset-0 w-full bg-primary/5 rounded-full -z-10"
+                                    layoutId="active-pill"
+                                    className="absolute inset-0 w-full bg-zinc-800 rounded-lg -z-10"
                                     initial={false}
                                     transition={{
                                         type: "spring",
-                                        stiffness: 300,
+                                        stiffness: 400,
                                         damping: 30,
                                     }}
-                                >
-                                    <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-8 h-1 bg-primary rounded-t-full">
-                                        <div className="absolute w-12 h-6 bg-primary/20 rounded-full blur-md -top-2 -left-2" />
-                                        <div className="absolute w-8 h-6 bg-primary/20 rounded-full blur-md -top-1" />
-                                        <div className="absolute w-4 h-4 bg-primary/20 rounded-full blur-sm top-0 left-2" />
-                                    </div>
-                                </motion.div>
+                                />
                             )}
                         </Link>
                     )
                 })}
+
+                {/* Desktop "Available" Status Divider */}
+                <div className="hidden sm:block w-px h-6 bg-white/10 mx-1" />
+
+                {/* Available Status */}
+                <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-500/10 border border-green-500/20">
+                    <span className="relative flex h-2 w-2">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                    </span>
+                    <span className="text-xs font-medium text-green-500 whitespace-nowrap">Available</span>
+                </div>
+
             </div>
         </div>
     )

@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Send } from "lucide-react"
 import { SocialIcons } from "@/components/ui/social-icons" // Import our previous component
+import { SpotifyPlayer } from "@/components/SpotifyPlayer"
+import Link from "next/link"
 
 export function Footer() {
     return (
@@ -36,11 +38,11 @@ export function Footer() {
                     <div>
                         <h3 className="mb-4 text-lg font-semibold">Quick Links</h3>
                         <nav className="space-y-2 text-sm">
-                            <a href="/" className="block transition-colors hover:text-primary">Home</a>
-                            <a href="/about" className="block transition-colors hover:text-primary">About Us</a>
-                            <a href="/projects" className="block transition-colors hover:text-primary">Projects</a>
-                            <a href="/blog" className="block transition-colors hover:text-primary">Blog</a>
-                            <a href="/contact" className="block transition-colors hover:text-primary">Contact</a>
+                            <Link href="/" className="block transition-colors hover:text-primary">Home</Link>
+                            <Link href="/about" className="block transition-colors hover:text-primary">About Us</Link>
+                            <Link href="/projects" className="block transition-colors hover:text-primary">Projects</Link>
+                            <Link href="/blog" className="block transition-colors hover:text-primary">Blog</Link>
+                            <Link href="/contact" className="block transition-colors hover:text-primary">Contact</Link>
                         </nav>
                     </div>
                     <div>
@@ -54,9 +56,12 @@ export function Footer() {
                     </div>
                     <div className="relative">
                         <h3 className="mb-4 text-lg font-semibold">Follow Us</h3>
-                        <div className="mb-6 flex space-x-4">
+                        <div className="mb-6 flex flex-col gap-4">
                             {/* Integrated Social Icons Component */}
                             <SocialIcons />
+                            <div className="mt-4">
+                                <SpotifyPlayer />
+                            </div>
                         </div>
                     </div>
                 </div>

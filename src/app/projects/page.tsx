@@ -1,15 +1,15 @@
-import { Projects } from '@/components/Projects'
-import { Metadata } from 'next'
+import { Metadata } from "next";
+import { FeaturedProjects } from "@/components/FeaturedProjects";
 
 export const metadata: Metadata = {
     title: "Projects | Aniketh Pawar",
-    description: "A showcase of my technical projects, featuring full-stack applications and experimental tools."
-}
+    description: "A showcase of my technical projects and experiments.",
+};
 
 export default function ProjectsPage() {
     return (
-        <div className="pt-20 min-h-screen">
-            <Projects />
-        </div>
-    )
+        <main className="min-h-screen pt-32 pb-16 px-6 max-w-7xl mx-auto">
+            <FeaturedProjects />
+        </main>
+    );
 }

@@ -1,9 +1,11 @@
 import Link from 'next/link'
 import { SocialIcons } from '@/components/ui/social-icons'
+import { SpotifyPlayer } from '@/components/SpotifyPlayer'
 
 const footerLinks = [
     { href: '/', label: 'Home' },
-    { href: '/projects', label: 'Projects' },
+    { label: 'Experience', href: '/experience' },
+    { label: 'Projects', href: '/projects' },
     { href: '/blog', label: 'Blog' },
     { href: '/contact', label: 'Contact' },
 ]
@@ -38,9 +40,10 @@ export function Footer() {
                         ))}
                     </div>
 
-                    {/* Right - Social Icons */}
-                    <div>
+                    {/* Right - Social Icons & Player */}
+                    <div className="flex flex-col items-end gap-4">
                         <SocialIcons />
+                        <SpotifyPlayer />
                     </div>
                 </div>
             </div>

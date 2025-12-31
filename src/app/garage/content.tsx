@@ -3,11 +3,11 @@
 import { useRef } from 'react'
 
 import { motion, useInView } from 'framer-motion'
-import { ExternalLink, BookOpen, Rocket, Zap } from 'lucide-react'
+import { ExternalLink, Rocket, Zap, BookOpen } from 'lucide-react'
 
-import { Card, CardHeader, CardContent, CardFooter } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Progress } from '@/components/ui/progress'
+import { GlowingEffect } from '@/components/ui/glowing-effect'
 
 const currentProjects = [
     {
@@ -42,6 +42,12 @@ const currentProjects = [
     }
 ]
 
+const experiments = [
+    "Learning Advanced development concepts",
+    "Deep diving into scalability from first principles",
+    "Building something everyday!",
+]
+
 const learningItems = [
     {
         id: 1,
@@ -66,12 +72,6 @@ const learningItems = [
     },
 ]
 
-const experiments = [
-    "Learning Advanced development concepts",
-    "Deep diving into scalability from first principles",
-    "Building something everyday!",
-]
-
 export default function GarageContent() {
     const sectionRef = useRef(null)
     const isInView = useInView(sectionRef, { once: true, margin: "-100px" })
@@ -79,7 +79,7 @@ export default function GarageContent() {
     return (
         <div className="min-h-screen">
             <main className="pt-24 pb-20 px-6">
-                <div className="max-w-6xl mx-auto">
+                <div className="max-w-7xl mx-auto">
                     {/* Header */}
                     <motion.div
                         ref={sectionRef}
@@ -102,162 +102,114 @@ export default function GarageContent() {
                         </p>
                     </motion.div>
 
-                    <div className="grid lg:grid-cols-3 gap-8">
-                        {/* Current Projects - Takes 2 columns */}
-                        <div className="lg:col-span-2 space-y-6">
-                            {/* Projects Section */}
-                            <motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                                transition={{ delay: 0.2, duration: 0.6 }}
-                            >
-                                <div className="flex items-center gap-2 mb-4">
-                                    <Rocket className="w-5 h-5 text-muted-foreground" />
-                                    <h2 className="font-semibold text-foreground">Currently Building</h2>
-                                </div>
-                                <div className="grid sm:grid-cols-2 gap-4">
-                                    {currentProjects.map((project, index) => (
-                                        <motion.div
-                                            key={project.id}
-                                            initial={{ opacity: 0, y: 20 }}
-                                            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                                            transition={{ delay: index * 0.1, duration: 0.5 }}
-                                        >
-                                            <Card className="h-full hover:border-foreground/20 transition-colors group">
-                                                <CardHeader className="pb-3">
-                                                    <div className="flex items-center justify-between mb-2">
-                                                        <Badge
-                                                            variant={project.status === 'Almost Done' ? 'default' : 'secondary'}
-                                                            className={project.status === 'Almost Done' ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20' : 'bg-amber-500/10 text-amber-400 border-amber-500/20'}
-                                                        >
-                                                            {project.status}
-                                                        </Badge>
-                                                        <span className="text-xs text-muted-foreground">{project.startDate}</span>
-                                                    </div>
-                                                    <div className="flex items-start justify-between">
-                                                        <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors">
-                                                            {project.title}
-                                                        </h3>
-                                                        {project.link && (
-                                                            <a
-                                                                href={project.link}
-                                                                target="_blank"
-                                                                rel="noopener noreferrer"
-                                                                className="text-muted-foreground hover:text-foreground transition-colors"
-                                                            >
-                                                                <ExternalLink className="w-4 h-4" />
-                                                            </a>
-                                                        )}
-                                                    </div>
-                                                </CardHeader>
-                                                <CardContent className="pb-3">
-                                                    <p className="text-sm text-muted-foreground mb-4">
-                                                        {project.description}
-                                                    </p>
-                                                    <div className="space-y-2">
-                                                        <div className="flex justify-between text-xs">
-                                                            <span className="text-muted-foreground">Progress</span>
-                                                            <span className="text-foreground">{project.progress}%</span>
-                                                        </div>
-                                                        <Progress value={project.progress} className="h-1.5" />
-                                                    </div>
-                                                </CardContent>
-                                                <CardFooter>
-                                                    <div className="flex flex-wrap gap-1.5">
-                                                        {project.technologies.slice(0, 3).map((tech) => (
-                                                            <Badge key={tech} variant="outline" className="text-xs">
-                                                                {tech}
-                                                            </Badge>
-                                                        ))}
-                                                        {project.technologies.length > 3 && (
-                                                            <Badge variant="outline" className="text-xs">
-                                                                +{project.technologies.length - 3}
-                                                            </Badge>
-                                                        )}
-                                                    </div>
-                                                </CardFooter>
-                                            </Card>
-                                        </motion.div>
-                                    ))}
-                                </div>
-                            </motion.div>
-
-                            {/* Experiments */}
-                            <motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                                transition={{ delay: 0.4, duration: 0.6 }}
-                            >
-                                <Card className="bg-linear-to-br from-indigo-500/5 to-purple-500/5 border-indigo-500/10">
-                                    <CardContent className="p-6">
-                                        <div className="flex items-center gap-2 mb-4">
-                                            <Zap className="w-5 h-5 text-indigo-400" />
-                                            <h3 className="font-semibold text-foreground">Quick Experiments</h3>
+                    {/* Glowing Grid Layout */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {currentProjects.map((project) => (
+                            <div key={project.id} className="relative h-full rounded-2xl p-0.5">
+                                <GlowingEffect
+                                    spread={40}
+                                    glow={true}
+                                    disabled={false}
+                                    proximity={64}
+                                    inactiveZone={0.01}
+                                />
+                                <div className="relative flex flex-col justify-between h-full rounded-[inherit] bg-background p-6 overflow-hidden">
+                                    {/* Content */}
+                                    <div>
+                                        <div className="flex items-center justify-between mb-4">
+                                            <div className="flex items-center gap-2">
+                                                <Rocket className="w-5 h-5 text-indigo-400" />
+                                                <span className="text-sm font-medium text-muted-foreground">Project</span>
+                                            </div>
+                                            <Badge
+                                                variant={project.status === 'Almost Done' ? 'default' : 'secondary'}
+                                                className={project.status === 'Almost Done' ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20' : 'bg-amber-500/10 text-amber-400 border-amber-500/20'}
+                                            >
+                                                {project.status}
+                                            </Badge>
                                         </div>
-                                        <div className="flex flex-wrap gap-2">
-                                            {experiments.map((exp, index) => (
-                                                <motion.span
-                                                    key={index}
-                                                    initial={{ opacity: 0, scale: 0.9 }}
-                                                    animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
-                                                    transition={{ delay: 0.5 + index * 0.05, duration: 0.3 }}
-                                                >
-                                                    <Badge variant="secondary" className="cursor-default hover:border-indigo-500/50 hover:text-indigo-400 transition-all">
-                                                        {exp}
-                                                    </Badge>
-                                                </motion.span>
+
+                                        <div className="mb-4">
+                                            <div className="flex items-center justify-between mb-2">
+                                                <h3 className="text-xl font-bold text-foreground">{project.title}</h3>
+                                                {project.link && (
+                                                    <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
+                                                        <ExternalLink className="w-4 h-4" />
+                                                    </a>
+                                                )}
+                                            </div>
+                                            <p className="text-sm text-muted-foreground leading-relaxed">
+                                                {project.description}
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <div className="mb-4 space-y-2">
+                                            <div className="flex justify-between text-xs">
+                                                <span className="text-muted-foreground">Progress</span>
+                                                <span className="text-foreground">{project.progress}%</span>
+                                            </div>
+                                            <Progress value={project.progress} className="h-1.5" />
+                                        </div>
+
+                                        <div className="flex flex-wrap gap-1.5">
+                                            {project.technologies.map((tech) => (
+                                                <Badge key={tech} variant="outline" className="text-xs bg-background/50">
+                                                    {tech}
+                                                </Badge>
                                             ))}
                                         </div>
-                                    </CardContent>
-                                </Card>
-                            </motion.div>
-                        </div>
-
-                        {/* Learning - Side column */}
-                        <div className="lg:col-span-1">
-                            <motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                                transition={{ delay: 0.3, duration: 0.6 }}
-                            >
-                                <div className="flex items-center gap-2 mb-4">
-                                    <BookOpen className="w-5 h-5 text-muted-foreground" />
-                                    <h2 className="font-semibold text-foreground">Currently Learning</h2>
+                                    </div>
                                 </div>
-                                <div className="space-y-3">
-                                    {learningItems.map((item, index) => (
-                                        <motion.div
-                                            key={item.id}
-                                            initial={{ opacity: 0, y: 20 }}
-                                            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                                            transition={{ delay: index * 0.1, duration: 0.5 }}
-                                        >
-                                            <Card className="hover:border-foreground/20 transition-colors group">
-                                                <CardContent className="p-4">
-                                                    <div className="flex items-start gap-3">
-                                                        <span className="text-2xl">{item.icon}</span>
-                                                        <div className="flex-1 min-w-0">
-                                                            <h3 className="font-medium text-foreground text-sm mb-1 group-hover:text-primary transition-colors">
-                                                                {item.title}
-                                                            </h3>
-                                                            <p className="text-xs text-muted-foreground leading-relaxed mb-2">
-                                                                {item.description}
-                                                            </p>
-                                                            <div className="flex flex-wrap gap-1">
-                                                                {item.resources.map((resource) => (
-                                                                    <Badge key={resource} variant="outline" className="text-xs">
-                                                                        {resource}
-                                                                    </Badge>
-                                                                ))}
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </CardContent>
-                                            </Card>
-                                        </motion.div>
+                            </div>
+                        ))}
+
+                        {/* Experiments Card */}
+                        <div className="relative h-full rounded-2xl p-0.5 md:col-span-2 lg:col-span-1">
+                            <GlowingEffect
+                                spread={40}
+                                glow={true}
+                                disabled={false}
+                                proximity={64}
+                                inactiveZone={0.01}
+                                variant="white"
+                            />
+                            <div className="relative h-full rounded-[inherit] bg-background p-6 flex flex-col">
+                                <div className="flex items-center gap-2 mb-4">
+                                    <Zap className="w-5 h-5 text-yellow-500" />
+                                    <h3 className="font-bold text-foreground">Experiments</h3>
+                                </div>
+                                <div className="flex flex-wrap gap-2">
+                                    {experiments.map((exp, index) => (
+                                        <Badge key={index} variant="secondary" className="text-sm py-1.5">
+                                            {exp}
+                                        </Badge>
                                     ))}
                                 </div>
-                            </motion.div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Learning Section */}
+                    <div className="mt-16">
+                        <div className="flex items-center gap-2 mb-8 justify-center">
+                            <BookOpen className="w-5 h-5 text-muted-foreground" />
+                            <h2 className="text-3xl font-bold">Experience that matters.</h2>
+                        </div>
+                        <div className="grid md:grid-cols-3 gap-6">
+                            {learningItems.map((item) => (
+                                <div key={item.id} className="border border-border/50 bg-secondary/20 rounded-xl p-6 hover:border-border transition-colors">
+                                    <div className="text-3xl mb-4">{item.icon}</div>
+                                    <h3 className="font-semibold text-foreground mb-2">{item.title}</h3>
+                                    <p className="text-sm text-muted-foreground mb-4">{item.description}</p>
+                                    <div className="flex flex-wrap gap-1.5">
+                                        {item.resources.map(res => (
+                                            <Badge key={res} variant="outline" className="text-xs bg-background">{res}</Badge>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </div>
