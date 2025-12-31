@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     default: "Aniketh Pawar | Full Stack Developer",
     template: "%s | Aniketh Pawar"
   },
-  description: "Full Stack Developer specializing in React, Next.js, Node.js, and TypeScript. Building digital experiences that matter.",
+  description: "Building digital experiences with Next.js, TypeScript, and modern UI libraries.",
   keywords: ["Full Stack Developer", "React", "Next.js", "TypeScript", "Node.js", "Portfolio"],
   authors: [{ name: "Aniketh Pawar" }],
   creator: "Aniketh Pawar",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     url: "https://aniketh.xyz",
     siteName: "Aniketh Pawar",
     title: "Aniketh Pawar | Full Stack Developer",
-    description: "Full Stack Developer specializing in React, Next.js, Node.js, and TypeScript.",
+    description: "Building digital experiences with Next.js, TypeScript, and modern UI libraries.",
   },
   twitter: {
     card: "summary_large_image",

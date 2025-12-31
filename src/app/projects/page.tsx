@@ -3,7 +3,7 @@ import { Metadata } from 'next'
 
 export const metadata: Metadata = {
     title: "Projects | Aniketh Pawar",
-    description: "A showcase of my projects, including web apps, open source contributions, and more."
+    description: "A showcase of my technical projects, featuring full-stack applications and experimental tools."
 }
 
 export default function ProjectsPage() {

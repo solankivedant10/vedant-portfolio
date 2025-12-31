@@ -3,7 +3,7 @@ import { Metadata } from 'next'
 
 export const metadata: Metadata = {
     title: "Contact | Aniketh Pawar",
-    description: "Get in touch for collaborations, freelance work, or just to say hi."
+    description: "Get in touch for freelance opportunities, collaborations, or just a coffee chat."
 }
 
 export default function ContactPage() {
