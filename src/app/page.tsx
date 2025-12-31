@@ -1,9 +1,9 @@
 import { Hero } from '@/components/Hero'
 import { Experience } from '@/components/Experience'
 import { Projects } from '@/components/Projects'
-import { GitHubHeatmap } from '@/components/GitHubHeatmap'
-import { LetsWorkTogether } from '@/components/LetsWorkTogether'
-import { Footer } from '@/components/Footer'
+import GitHubHeatmap from '@/components/GitHubHeatmap'
+import { ContactSection } from '@/components/ui/contact-section'
+import { Footer } from '@/components/ui/footer-section'
 import { Separator } from '@/components/ui/separator'
 
 export default function Home() {
@@ -36,8 +36,8 @@ export default function Home() {
         <Separator className="bg-border" />
       </div>
 
-      {/* Let's Work Together Section */}
-      <LetsWorkTogether />
+      {/* Contact Section */}
+      <ContactSection />
 
       {/* Footer */}
       <Footer />

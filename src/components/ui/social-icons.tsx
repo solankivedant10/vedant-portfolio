@@ -37,7 +37,7 @@ export function SocialIcons() {
 
     return (
         <div className="relative flex items-center gap-0.5 px-1.5 py-1.5 rounded-2xl bg-background border border-border">
-            <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-foreground/[0.03] to-transparent pointer-events-none" />
+            <div className="absolute inset-0 rounded-2xl bg-linear-to-b from-foreground/3 to-transparent pointer-events-none" />
 
             {socials.map((social, index) => (
                 <a
@@ -51,7 +51,7 @@ export function SocialIcons() {
                     aria-label={social.name}
                 >
                     <span
-                        className={`absolute inset-1 rounded-lg bg-foreground/[0.08] transition-all duration-300 ease-out ${hoveredIndex === index ? "opacity-100 scale-100" : "opacity-0 scale-90"
+                        className={`absolute inset-1 rounded-lg bg-foreground/8 transition-all duration-300 ease-out ${hoveredIndex === index ? "opacity-100 scale-100" : "opacity-0 scale-90"
                             }`}
                     />
 
