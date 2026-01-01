@@ -16,14 +16,14 @@ export function Footer() {
     return (
         <footer className="py-8 px-6 border-t border-border">
             <div className="max-w-6xl mx-auto">
-                <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div className="flex flex-col sm:flex-row items-center justify-between gap-6 sm:gap-4">
                     {/* Left - Logo & Copyright */}
                     <div className="flex items-center gap-3">
                         <div className="w-6 h-6 rounded bg-white flex items-center justify-center">
-                            <span className="text-black font-bold text-[10px]">AP</span>
+                            <span className="text-black font-bold text-[10px]">VS</span>
                         </div>
                         <span className="text-sm text-muted-foreground">
-                            © {currentYear} Aniketh Pawar
+                            © {currentYear} Vedant Solanki
                         </span>
                     </div>
 
@@ -41,7 +41,7 @@ export function Footer() {
                     </div>
 
                     {/* Right - Social Icons & Player */}
-                    <div className="flex flex-col items-end gap-4">
+                    <div className="flex flex-col items-center sm:items-end gap-4">
                         <SocialIcons />
                         <SpotifyPlayer />
                     </div>

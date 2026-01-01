@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 import BlogContent from './content'
 
 export const metadata: Metadata = {
-    title: "Blog | Aniketh Pawar",
+    title: "Blog | Vedant Solanki",
     description: "Thoughts on software engineering, career growth, and web technologies."
 }
 

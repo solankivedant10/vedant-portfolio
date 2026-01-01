@@ -27,12 +27,14 @@ export const Header = () => {
     return (
         <header className="fixed top-0 left-0 w-full z-100 px-6 py-6 pointer-events-none">
             <div className="flex items-center gap-4 pointer-events-auto">
+                {/* Updated Initials */}
                 <div className="h-10 w-10 bg-white text-black rounded-full flex items-center justify-center font-bold text-lg">
-                    AP
+                    VS
                 </div>
                 <div className="flex flex-col">
+                    {/* Updated Name */}
                     <span className="font-bold text-sm text-foreground leading-tight">
-                        Aniketh Pawar
+                        Vedant Solanki
                     </span>
                     <span className="text-xs text-muted-foreground font-mono uppercase tracking-wider">
                         {time || "Loading..."}

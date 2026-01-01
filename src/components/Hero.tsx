@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { ArrowRight, Calendar, Github, Linkedin, Mail, Twitter } from "lucide-react";
+import { ArrowRight, Calendar, Github, Linkedin, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function Hero() {
@@ -13,15 +13,15 @@ export default function Hero() {
                         — WELCOME TO MY PORTFOLIO
                     </p>
                     <h1 className="text-5xl md:text-[64px] font-bold tracking-tight text-white leading-[1.1]">
-                        I&apos;m <span className="text-white">Aniketh</span>, <br />
+                        I&apos;m <span className="text-white">Vedant</span>, <br />
                         <span className="text-transparent bg-clip-text" style={{ backgroundImage: 'linear-gradient(135deg, rgb(255, 255, 255), rgb(161, 161, 170))' }}>
                             building digital experiences.
                         </span>
                     </h1>
                     <p className="text-lg text-zinc-400 max-w-xl leading-relaxed">
-                        A final-year engineering student at NIT Durgapur who fell in love with
-                        turning ideas into reality through code. From building election systems
-                        to news platforms, I craft solutions that matter.
+                        A final-year engineering student at MBIT-CVM University who fell in love with
+                        turning ideas into reality through code. From building autonomous cloud agents
+                        to AI-powered career platforms, I craft solutions that matter.
                     </p>
                 </div>
 
@@ -29,22 +29,21 @@ export default function Hero() {
                 <div className="flex flex-col sm:flex-row gap-6 items-start sm:items-center">
                     <div className="flex gap-4">
                         <Button asChild size="lg" className="bg-white text-black hover:bg-zinc-200 font-medium rounded-full px-8">
-                            <a href="https://cal.com/aniketh-pawar" target="_blank" rel="noopener noreferrer">
+                            <a href="https://cal.com/solanki-vedant-qhzoml" target="_blank" rel="noopener noreferrer">
                                 <Calendar className="mr-2 h-4 w-4" /> Book a call
                             </a>
                         </Button>
                         <Button asChild variant="ghost" size="lg" className="text-zinc-300 hover:text-white hover:bg-white/10 rounded-full">
-                            <Link href="/#projects">
+                            <Link href="/projects">
                                 View my work <ArrowRight className="ml-2 h-4 w-4" />
                             </Link>
                         </Button>
                     </div>
 
                     <div className="flex gap-4 text-zinc-500">
-                        <a href="https://github.com/ANIKETHPAWAR" className="hover:text-white transition-colors" target="_blank" rel="noopener noreferrer"><Github className="h-5 w-5" /></a>
-                        <a href="https://www.linkedin.com/in/aniketh-pawar-070162210" className="hover:text-white transition-colors" target="_blank" rel="noopener noreferrer"><Linkedin className="h-5 w-5" /></a>
-                        <a href="https://x.com/aniketh_pawar" className="hover:text-white transition-colors" target="_blank" rel="noopener noreferrer"><Twitter className="h-5 w-5" /></a>
-                        <a href="mailto:hello@aniketh.xyz" className="hover:text-white transition-colors"><Mail className="h-5 w-5" /></a>
+                        <a href="https://github.com/solankivedant10" className="hover:text-white transition-colors" target="_blank" rel="noopener noreferrer"><Github className="h-5 w-5" /></a>
+                        <a href="https://www.linkedin.com/in/vedants01" className="hover:text-white transition-colors" target="_blank" rel="noopener noreferrer"><Linkedin className="h-5 w-5" /></a>
+                        <a href="mailto:vedants1968@gmail.com" className="hover:text-white transition-colors"><Mail className="h-5 w-5" /></a>
                     </div>
                 </div>
 
@@ -64,8 +63,6 @@ export default function Hero() {
                     </div>
                 </div>
             </div>
-
-            {/* Optional: Right side visual placeholder (can be added later) */}
         </section>
     );
 }

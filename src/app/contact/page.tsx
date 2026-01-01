@@ -2,7 +2,7 @@ import { ContactSection } from '@/components/ui/contact-section'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-    title: "Contact | Aniketh Pawar",
+    title: "Contact | Vedant Solanki",
     description: "Get in touch for freelance opportunities, collaborations, or just a coffee chat."
 }
 

@@ -11,68 +11,57 @@ import { Button } from '@/components/ui/button'
 const projects = [
     {
         id: 1,
-        title: "SneakOut",
-        tagline: "Discover hidden gems in your city",
-        description: "A hyperlocal spot discovery platform where users crowdsource and explore nearby hangout locations. Search by category, proximity, or community ratings.",
-        technologies: ["React", "Node.js", "MongoDB", "Leaflet.js", "JWT"],
+        title: "Cloud Janitor (FinOps)",
+        tagline: "Autonomous Infrastructure Agent",
+        description: "An AI agent that detects wasted cloud resources and proposes safe Terraform cleanup code. Features a human-in-the-loop approval workflow to ensure safety before destruction.",
+        technologies: ["Next.js", "Gemini 1.5 Pro", "Kestra", "Terraform"],
         category: "Full Stack",
-        website: "https://sneakout.me",
-        source: "https://github.com/ANIKETHPAWAR/SneakOut",
+        website: "https://cloud-janitor-finops.vercel.app",
+        source: "https://github.com/solankivedant10/FinOps-Agent",
         featured: true,
     },
     {
         id: 2,
-        title: "SangbadBangla",
-        tagline: "Regional news platform",
-        description: "Dynamic Bengali news website serving thousands of readers with live cricket scores, breaking news, and an admin dashboard for content management.",
-        technologies: ["React", "Node.js", "Firebase", "Auth0"],
+        title: "SensAI Career Coach",
+        tagline: "AI-Powered Career Platform",
+        description: "Full-stack platform offering resume analysis and career guidance. Built with an event-driven architecture using Inngest to handle complex AI workflows asynchronously.",
+        technologies: ["Next.js", "Neon DB", "Prisma", "Inngest"],
         category: "Full Stack",
-        website: "https://sangbadbangla.news",
-        source: "https://github.com/ANIKETHPAWAR/Sangbad-bangla",
+        website: "#", // Add live link if available
+        source: "https://github.com/solankivedant10/SensAI",
         featured: true,
     },
     {
         id: 3,
-        title: "Voting App",
-        tagline: "Secure election system",
-        description: "Real-time voting application with Aadhar-based authentication. Users can vote for candidates and view live vote counts as they update.",
-        technologies: ["Node.js", "Express", "MongoDB"],
-        category: "Backend",
-        website: "https://github.com/ANIKETHPAWAR/Voting-App",
-        source: "https://github.com/ANIKETHPAWAR/Voting-App",
+        title: "RAG Resume Analyzer",
+        tagline: "Cost-Effective Document AI",
+        description: "A tool using local embeddings (BAAI/bge-small) to chat with PDFs without hitting API rate limits, with Gemini handling the reasoning layer.",
+        technologies: ["Streamlit", "LlamaIndex", "Gemini API", "Python"],
+        category: "AI / ML",
+        website: "#",
+        source: "https://github.com/solankivedant10/rag-resume-analyzer",
+        featured: true,
+    },
+    {
+        id: 4,
+        title: "Talent Recommender",
+        tagline: "Semantic Job Matching",
+        description: "Semantic search engine that matches candidates to job postings. Uses vector embeddings to understand context and LLMs to generate 'Why this match?' explanations.",
+        technologies: ["FastAPI", "React", "Vector Search", "Python"],
+        category: "AI / ML",
+        website: "#",
+        source: "https://github.com/solankivedant10/Talent-Recommender-LLM",
         featured: true,
     },
     {
         id: 5,
-        title: "Routemate",
-        tagline: "Landing Page",
-        description: "A website to connect solo travelers across the world.",
-        technologies: ["JavaScript", "TailwindCSS", "ReactJs", "Framer Motion"],
-        category: "Frontend",
-        website: "https://route-mate-sage.vercel.app",
-        source: "https://github.com/ANIKETHPAWAR/RouteMate",
-        featured: true,
-    },
-    {
-        id: 6,
-        title: "Brainly",
-        tagline: "Resource vault",
-        description: "Build your personal knowledge hub — save tutorials, articles, and resources that matter.",
-        technologies: ["JavaScript", "TailwindCSS", "ReactJs", "MongoDB"],
-        category: "Fullstack",
-        website: "https://brainly-alpha-nine.vercel.app/",
-        source: "https://github.com/ANIKETHPAWAR/Brainly",
-        featured: true,
-    },
-    {
-        id: 8,
-        title: "Tea-station",
-        tagline: "Tea Cafe",
-        description: "Over one hundred flavours of specially crafted tea.",
-        technologies: ["Html", "Css", "Javascript"],
-        category: "Frontend",
-        website: "https://tea-station-aniketh-pawar.netlify.app/",
-        source: "https://github.com/ANIKETHPAWAR/tea-station-website",
+        title: "IPL Win Predictor",
+        tagline: "Real-Time Sports Analytics",
+        description: "Predicts the winning probability of an IPL team during a live match based on current score, wickets, and venue statistics.",
+        technologies: ["Python", "Scikit-learn", "Streamlit", "Pandas"],
+        category: "Data Science",
+        website: "#",
+        source: "https://github.com/solankivedant10/IPL-win_predictor",
         featured: true,
     }
 ]
@@ -93,7 +82,7 @@ function ProjectCard({ project, index }: ProjectCardProps) {
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ delay: index * 0.1, duration: 0.5 }}
         >
-            <Card className="h-full bg-card border-border hover:border-foreground/20 transition-colors group">
+            <Card className="h-full bg-card border-border hover:border-foreground/20 transition-colors group flex flex-col">
                 <CardHeader className="pb-3">
                     <div className="flex items-start justify-between">
                         <div>
@@ -103,14 +92,16 @@ function ProjectCard({ project, index }: ProjectCardProps) {
                             <p className="text-sm text-muted-foreground">{project.tagline}</p>
                         </div>
                         <div className="flex gap-2">
-                            <a
-                                href={project.website}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="p-2 rounded-lg bg-secondary text-muted-foreground hover:text-foreground hover:bg-secondary/80 transition-all"
-                            >
-                                <ExternalLink className="w-4 h-4" />
-                            </a>
+                            {project.website !== "#" && (
+                                <a
+                                    href={project.website}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="p-2 rounded-lg bg-secondary text-muted-foreground hover:text-foreground hover:bg-secondary/80 transition-all"
+                                >
+                                    <ExternalLink className="w-4 h-4" />
+                                </a>
+                            )}
                             <a
                                 href={project.source}
                                 target="_blank"
@@ -123,13 +114,13 @@ function ProjectCard({ project, index }: ProjectCardProps) {
                     </div>
                 </CardHeader>
 
-                <CardContent className="pb-3">
+                <CardContent className="pb-3 grow">
                     <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">
                         {project.description}
                     </p>
                 </CardContent>
 
-                <CardFooter>
+                <CardFooter className="mt-auto">
                     <div className="flex flex-wrap gap-2">
                         {project.technologies.map((tech) => (
                             <Badge key={tech} variant="secondary" className="text-xs">
@@ -186,7 +177,7 @@ export function Projects() {
                 >
                     <Button variant="outline" asChild className="gap-2 group">
                         <a
-                            href="https://github.com/ANIKETHPAWAR"
+                            href="https://github.com/solankivedant10"
                             target="_blank"
                             rel="noopener noreferrer"
                         >
@@ -199,5 +190,3 @@ export function Projects() {
         </section>
     )
 }
-
-export default Projects

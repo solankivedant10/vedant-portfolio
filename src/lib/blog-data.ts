@@ -17,114 +17,87 @@ export interface BlogPost {
 export const blogPosts: BlogPost[] = [
     {
         id: 1,
-        title: "Inside My Job Hunt: A Final-Year Journey",
-        excerpt: "A raw, honest look at the job-hunting grind as a final-year B.Tech student. Hundreds of applications, countless rejections, and the lessons learned along the way.",
-        date: "Dec 10, 2025",
-        readTime: "5 min read",
-        tags: ["Personal", "Career", "Job Hunt"],
-        slug: "job-hunt-journey",
+        title: "Building InfiJobs: What I Learned While Building My First Serverless AI Platform",
+        excerpt:
+            "Lessons from my first real project—how I handled AI-based code evaluation, database security, and performance as a junior developer.",
+        date: "Jan 01, 2026",
+        readTime: "8 min read",
+        tags: [
+            "React",
+            "Supabase",
+            "Serverless",
+            "Gemini AI",
+            "Learning in Public"
+        ],
+        slug: "building-infijobs-first-serverless-ai-project",
         featured: true,
-        content: `🚀 Inside My Job Hunt: A Final-Year Journey Through Rejections, Grind & Growth
+        content: `
 
-Hi everyone,
-I'm Aniketh Pawar, a final-year B.Tech student at NIT Durgapur, and like thousands of students across India, I'm deep into the job-hunting phase. If you're reading this, there's a good chance you're on the same path—or will be soon.
 
-This blog is not a success story (yet).
-It's about showing up every day, even when it feels impossible.
+Key Changes Applied:
 
-🔍 The Reality: Hundreds of Applications, Countless Emails & Endless Effort
+Title: Changed to a "How-to" format with numbers to boost engagement (Tip: *"36% of people preferred titles with numbers"*).
+Structure: clear Problem/Solution headers for skimmability (Tip: *"Write with the idea that someone will be able to skim"*).
+Visuals: Added placeholders for architecture diagrams to break up text (Tip: *"Images can also help break up what might seem like an endless sea of words"*).
+Tone: Simplified the language to be more direct (Tip: *"Write as if you are talking to a High-Schooler"*).
 
-Every week, I apply to hundreds of roles—
-Full-time, internships, startups, MNCs.
-Every platform—LinkedIn, AngelList, company portals.
+How I Built a Serverless AI Platform: 3 Key Lessons for Junior Developers
 
-I write:
-• Tailored emails
-• Cover letters
-• Cold DMs on LinkedIn and Twitter
-• Networking messages
-• Follow-ups
+Moving from tutorials to building an actual product is intimidating. I had built small projects before, but InfiJobs was the first time I had to look beyond just "making things work" and focus on real-world engineering like security, performance, and scalability.
 
-And in between all of this…
-I'm still preparing for interviews, revising fundamentals, building projects, and upskilling.
+InfiJobs is a career preparation platform I built where developers can practice coding and track their progress. Along the way, I made plenty of mistakes and changed approaches multiple times.
 
-The grind is real.
-But the growth is real too.
+Here are the three biggest technical challenges I faced and exactly how I solved them.
 
-🧠 Job Hunting Isn't Just Technical—It's Mental
+Challenge 1: Evaluating Code Without a Backend Sandbox
 
-Let's talk honestly:
-There are days you feel mentally exhausted.
-Days where every rejection email stings a little more.
-Days where you doubt your skills, doubt your efforts, even doubt your potential.
+The Problem
+Platforms like LeetCode execute user code inside isolated containers (sandboxes). As a solo developer, maintaining that kind of complex, secure infrastructure wasn't realistic. I needed a way to evaluate user code without running untrusted scripts on my own servers.
 
-But here's the truth I learned:
+The Solution
+I used the Google Gemini 2.0 Flash API as a serverless evaluation engine.
 
-If you stop now, you won't just lose today's opportunity — you'll lose tomorrow's too.
+Instead of executing the code, I treated the user’s solution and the problem constraints as a prompt. I asked the AI to evaluate correctness, edge cases, and efficiency.
 
-Opportunities don't wait for "the right moment."
-You have to keep moving, even when tired, frustrated, or overwhelmed.
+To ensure the output wasn't just random text, I enforced structured JSON responses that matched my TypeScript interfaces.
 
-🎯 The Habit That Changed Everything: Apply Daily
+This allowed my frontend to safely parse results—like pass/fail status and hints—without ever needing a traditional execution backend.
 
-One lesson this journey taught me:
+Challenge 2: Enforcing Security at the Database Level
 
-⭐ Consistency beats intensity.
+The Problem
+When you have multiple users, data isolation is critical. My first instinct was to check user IDs in my API logic. The issue? Missing a single check in one API route could lead to a serious data leak.
 
-You don't need to apply for 100 jobs in one day.
-Just apply for some every single day.
+The Solution
+I moved security down to the database layer using PostgreSQL Row Level Security (RLS) with Supabase.
 
-Even when:
-• You're tired
-• You're busy
-• You just got rejected
-• You had a bad interview
-• You're stressed about college or exams
+This ensures the database itself enforces the rules. Even if my frontend code makes a mistake and requests the wrong data, the database will refuse to return it.
 
-Take one shot.
-Send one application.
-Write one cold DM.
-Do one thing your future self will be proud of.
+Lesson Learned: Never rely on just one layer for security. The database is often the safest place to enforce access rules.
 
-The difference between getting a job and staying stuck often comes down to that one extra application you sent when you didn't feel like it.
+Challenge 3: Improving Performance by 40%
 
-📈 Upskilling Between Applications
+The Problem
+As I added dashboards, analytics, and AI tools, the app became heavy. Users were downloading code for sections of the site they weren't even visiting.
 
-Parallel to applying, I keep learning:
-• Fixing mistakes after every interview
-• Reworking my resume based on feedback
-• Solving questions I got stuck on
-• Improving my fundamentals
-• Rebuilding confidence in skills I already know
+The Solution
+I implemented lazy loading and manual chunk splitting using React and Vite. I split large AI libraries into separate chunks and ensured heavy routes were only loaded via React.lazy() when requested.
 
-Every interview—good or bad—makes you 1% better.
-And this compounding finally pays off.
+The Result
+The initial page load time improved by roughly 40%, making the app feel significantly snappier.
 
-🧭 The Journey Continues…
+Final Thoughts
 
-This is not the final chapter.
-I'm still interviewing, still learning, still applying, still hustling.
+Building InfiJobs pushed me to think about trade-offs rather than just code syntax. I learned to accept extra SQL complexity for better security and to optimize for simplicity over premature scaling.
 
-I'll be sharing:
-• My complete job-hunting journey
-• Strategies that actually helped
-• Cold email and DM templates
-• How I prepare for interviews
-• What mistakes to avoid
-• How to stay sane through the process
+I am actively looking for **Software Developer** opportunities where I can apply these skills to real-world products.
 
-If you're in the same phase, just remember:
+Let's connect! 
+[LinkedIn](https://www.google.com/search?q=https://www.linkedin.com/in/vedants01)
 
-Keep going.
-Take your shot.
-Believe in yourself.
-Your opportunity is on its way.
-
-Thanks for reading.
-If my journey resonates with you, stay connected — more coming soon. 🚀
-
-— Aniketh Pawar`
-    },
+Thanks for reading. 
+`
+    }
 ]
 
 /**
@@ -132,11 +105,10 @@ If my journey resonates with you, stay connected — more coming soon. 🚀
  */
 export function getAllPosts(): BlogPost[] {
     return [...blogPosts].sort((a, b) => {
-        const dateA = new Date(a.date)
-        const dateB = new Date(b.date)
-        return dateB.getTime() - dateA.getTime()
+        return Date.parse(b.date) - Date.parse(a.date)
     })
 }
+
 
 /**
  * Get featured posts for homepage (max 3)

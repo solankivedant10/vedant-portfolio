@@ -7,9 +7,8 @@ export default function GitHubHeatmap() {
     const [data, setData] = useState<{ date: string; count: number }[]>([]);
 
     useEffect(() => {
-        // Replace 'aniketh-pawar' with your actual GitHub username
-        // I am using ANIKETHPAWAR as seen in the codebase
-        fetch("https://github-contributions-api.jogruber.de/v4/ANIKETHPAWAR?y=last")
+        // Updated to fetch data for 'solankivedant10'
+        fetch("https://github-contributions-api.jogruber.de/v4/solankivedant10?y=last")
             .then((res) => res.json())
             .then((json) => {
                 // Map the API response to our component's format

@@ -12,63 +12,93 @@ import { GlowingEffect } from '@/components/ui/glowing-effect'
 const currentProjects = [
     {
         id: 1,
-        title: "AI-Powered Blog Creation",
-        description: "Transform your ideas into compelling articles in seconds. Professional content creation powered by advanced AI.",
-        status: "In Progress",
-        progress: 50,
-        technologies: ["React.js", "OpenAI API", "TailwindCSS", "ShadCN UI"],
-        startDate: "Dec 2025",
-        link: "https://draft-iq.vercel.app/"
+        title: "Cloud Janitor (FinOps)",
+        description: "Autonomous AI agent that detects wasted cloud resources and proposes safe Terraform cleanup code with human-in-the-loop validation.",
+        status: "Completed",
+        progress: 100,
+        technologies: ["Kestra", "Gemini 2.5 Pro", "Terraform", "Next.js", "Cline", "Vercel"],
+        startDate: "Nov 2025",
+        link: "https://github.com/solankivedant10/FinOps-Agent"
     },
     {
         id: 2,
-        title: "Portfolio V2",
-        description: "Redesigning my portfolio with improved animations and better UX.",
-        status: "Almost Done",
-        progress: 85,
-        technologies: ["Next.js", "Framer Motion", "Tailwind", "TypeScript"],
-        startDate: "Dec 2025",
-        link: "https://aniketh.xyz"
+        title: "SensAI Career Coach",
+        description: "Full-stack AI platform offering resume analysis and career guidance. Features an event-driven architecture.",
+        status: "Completed",
+        progress: 100,
+        technologies: ["Next.js", "Neon DB", "Prisma", "Inngest", "Vercel"],
+        startDate: "Jan 2025",
+        link: "https://github.com/solankivedant10/SensAI"
     },
     {
         id: 3,
-        title: "Route Mate",
-        description: "Connect with verified travelers heading your way. Share rides, split costs, and make your solo journey safer.",
-        status: "In Progress",
-        progress: 50,
-        technologies: ["React", "Framer Motion", "Tailwind"],
+        title: "RAG Resume Analyzer",
+        description: "Cost-effective document analysis tool using local embeddings to chat with PDFs without hitting API rate limits.",
+        status: "Completed",
+        progress: 100,
+        technologies: ["Streamlit", "LlamaIndex", "Gemini", "Python"],
         startDate: "Dec 2025",
-        link: "https://route-mate-sage.vercel.app"
+        link: "https://github.com/solankivedant10/rag-resume-analyzer"
+    },
+    {
+        id: 4,
+        title: "Talent Recommender",
+        description: "Semantic search engine matching candidates to jobs. Uses LLMs to explain 'Why this match?' to recruiters.",
+        status: "Completed",
+        progress: 100,
+        technologies: ["FastAPI", "React", "Sentence Transformers", "Vector Search"],
+        startDate: "Sept 2025",
+        link: "https://github.com/solankivedant10/Talent-Recommender-LLM"
+    },
+    {
+        id: 5,
+        title: "Portfolio V2",
+        description: "My personal digital garden. Redesigned with a focus on clean UI, smooth animations, and better UX.",
+        status: "Almost Done",
+        progress: 90,
+        technologies: ["Next.js", "TypeScript", "Tailwind", "Framer Motion"],
+        startDate: "Dec  2025",
+        link: "https://github.com/solankivedant10/vedant-portfolio"
+    },
+    {
+        id: 6,
+        title: "IPL Win Predictor",
+        description: "Real-time sports analytics tool predicting match outcomes based on live score, wickets, and venue data.",
+        status: "Completed",
+        progress: 100,
+        technologies: ["Python", "Scikit-learn", "Streamlit", "Pandas"],
+        startDate: "Apr 2025",
+        link: "https://github.com/solankivedant10/IPL-win_predictor"
     }
 ]
 
 const experiments = [
-    "Learning Advanced development concepts",
-    "Deep diving into scalability from first principles",
-    "Building something everyday!",
+    "Mastering Full Stack Architecture & Scalability",
+    "Grinding Data Structures and Algorithms (DSA)",
+    "Exploring Autonomous Agents & RAG Pipelines",
 ]
 
 const learningItems = [
     {
         id: 1,
-        title: "System Design",
-        description: "Deep diving into distributed systems, scalability patterns, and architecture decisions.",
-        icon: "🏗️",
-        resources: ["Designing Data-Intensive Applications", "System Design Interview"]
+        title: "Data Structures & Algorithms",
+        description: "Sharpening problem-solving skills and mastering complexity analysis for technical interviews.",
+        icon: "🧩",
+        resources: ["LeetCode", "NeetCode 150", "Cracking the Coding Interview"]
     },
     {
         id: 2,
-        title: "DevOps & Infrastructure",
-        description: "Learning Docker, Kubernetes, and cloud deployment strategies.",
-        icon: "☁️",
-        resources: ["AWS", "Docker", "CI/CD pipelines"]
+        title: "Full Stack Engineering",
+        description: "Building scalable web applications with modern frameworks, serverless architecture, and robust databases.",
+        icon: "💻",
+        resources: ["Next.js Docs", "PostgreSQL", "System Design Patterns"]
     },
     {
         id: 3,
-        title: "TypeScript Advanced Patterns",
-        description: "Mastering type-level programming and advanced TypeScript patterns.",
-        icon: "📘",
-        resources: ["Total TypeScript", "Type Challenges"]
+        title: "Autonomous Agents & RAG",
+        description: "Exploring LLM orchestration, vector databases, and agentic workflows.",
+        icon: "🤖",
+        resources: ["LangChain", "LlamaIndex", "DeepLearning.ai"]
     },
 ]
 
@@ -122,8 +152,14 @@ export default function GarageContent() {
                                                 <span className="text-sm font-medium text-muted-foreground">Project</span>
                                             </div>
                                             <Badge
-                                                variant={project.status === 'Almost Done' ? 'default' : 'secondary'}
-                                                className={project.status === 'Almost Done' ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20' : 'bg-amber-500/10 text-amber-400 border-amber-500/20'}
+                                                variant={project.status === 'Completed' ? 'default' : 'secondary'}
+                                                className={
+                                                    project.status === 'Completed'
+                                                        ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20'
+                                                        : project.status === 'Almost Done'
+                                                            ? 'bg-blue-500/10 text-blue-400 border-blue-500/20'
+                                                            : 'bg-amber-500/10 text-amber-400 border-amber-500/20'
+                                                }
                                             >
                                                 {project.status}
                                             </Badge>
@@ -195,7 +231,8 @@ export default function GarageContent() {
                     <div className="mt-16">
                         <div className="flex items-center gap-2 mb-8 justify-center">
                             <BookOpen className="w-5 h-5 text-muted-foreground" />
-                            <h2 className="text-3xl font-bold">Experience that matters.</h2>
+                            {/* FIXED: Changed ' to &apos; */}
+                            <h2 className="text-3xl font-bold">Currently I&apos;m learning!</h2>
                         </div>
                         <div className="grid md:grid-cols-3 gap-6">
                             {learningItems.map((item) => (

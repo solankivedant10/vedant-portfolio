@@ -5,32 +5,32 @@ import { Badge } from "@/components/ui/badge";
 
 const projects = [
     {
-        title: "SneakOut",
-        description: "Discover hidden gems in your city. A hyperlocal spot discovery platform where users crowdsource and explore nearby hangout locations. Search by category, proximity, or community ratings.",
-        stack: ["React", "Node.js", "MongoDB", "Leaflet.js", "JWT"],
-        live: "#",
-        github: "#",
+        title: "Cloud Janitor (FinOps Agent)",
+        description: "Autonomous AI agent that detects wasted cloud resources and proposes safe Terraform cleanup code. Features a human-in-the-loop approval workflow to ensure safety before destruction.",
+        stack: ["Next.js", "Gemini 1.5 Pro", "Kestra", "Terraform", "Neon DB"],
+        live: "https://cloud-janitor-finops.vercel.app",
+        github: "https://github.com/solankivedant10/FinOps-Agent",
     },
     {
-        title: "SangbadBangla",
-        description: "Dynamic Bengali news website serving thousands of readers with live cricket scores, breaking news, and an admin dashboard for content management.",
-        stack: ["React", "Node.js", "Firebase", "Auth0"],
-        live: "#",
-        github: "#",
+        title: "SensAI Career Coach",
+        description: "Full-stack AI platform offering resume analysis and career guidance. Built with an event-driven architecture using Inngest to handle complex AI workflows asynchronously.",
+        stack: ["Next.js", "Neon DB", "Prisma", "Inngest", "Shadcn UI"],
+        live: "#", // Add live link if available, or keep #
+        github: "https://github.com/solankivedant10/SensAI",
     },
     {
-        title: "Voting App",
-        description: "Real-time voting application with Aadhar-based authentication. Users can vote for candidates and view live vote counts as they update.",
-        stack: ["Node.js", "Express", "MongoDB"],
+        title: "RAG Resume Analyzer",
+        description: "Cost-effective document analysis tool. Uses local embeddings (BAAI/bge-small) to chat with PDFs without hitting API rate limits, with Gemini handling the reasoning.",
+        stack: ["Streamlit", "LlamaIndex", "Gemini API", "Python"],
         live: "#",
-        github: "#",
+        github: "https://github.com/solankivedant10/rag-resume-analyzer",
     },
     {
-        title: "Routemate",
-        description: "A website to connect solo travelers across the world. Find companions for your next journey.",
-        stack: ["JavaScript", "TailwindCSS", "ReactJs", "Framer Motion"],
+        title: "Talent Recommender",
+        description: "Semantic search engine that matches candidates to job postings. Uses vector embeddings to understand context and LLMs to generate 'Why this match?' explanations.",
+        stack: ["FastAPI", "React", "Sentence Transformers", "Vector Search"],
         live: "#",
-        github: "#",
+        github: "https://github.com/solankivedant10/Talent-Recommender-LLM",
     }
 ];
 
@@ -60,10 +60,12 @@ export const FeaturedProjects = () => {
                                 {project.title}
                             </h3>
                             <div className="flex gap-3">
-                                <Link href={project.live} aria-label={`Visit ${project.title} live site`} className="text-zinc-400 hover:text-white transition-colors">
-                                    <ExternalLink className="h-5 w-5" />
-                                </Link>
-                                <Link href={project.github} aria-label={`View ${project.title} on GitHub`} className="text-zinc-400 hover:text-white transition-colors">
+                                {project.live !== "#" && (
+                                    <Link href={project.live} target="_blank" aria-label={`Visit ${project.title} live site`} className="text-zinc-400 hover:text-white transition-colors">
+                                        <ExternalLink className="h-5 w-5" />
+                                    </Link>
+                                )}
+                                <Link href={project.github} target="_blank" aria-label={`View ${project.title} on GitHub`} className="text-zinc-400 hover:text-white transition-colors">
                                     <Github className="h-5 w-5" />
                                 </Link>
                             </div>

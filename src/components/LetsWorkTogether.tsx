@@ -15,8 +15,7 @@ export function LetsWorkTogether() {
     }
 
     const handleBookCall = () => {
-        // Update to your actual Cal.com link
-        window.open("https://cal.com/anikethpawar/30min", "_blank")
+        window.open("https://cal.com/solanki-vedant-qhzoml", "_blank")
     }
 
     return (

@@ -3,15 +3,14 @@
 import { useRef, useEffect } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { getCalApi } from "@calcom/embed-react"
-import { Calendar, Github, Linkedin, Twitter, Mail } from 'lucide-react'
+import { Calendar, Github, Linkedin, Mail } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 
 const socials = [
-    { name: 'GitHub', href: 'https://github.com/ANIKETHPAWAR', icon: Github },
-    { name: 'LinkedIn', href: 'https://www.linkedin.com/in/aniketh-pawar-070162210', icon: Linkedin },
-    { name: 'Twitter', href: 'https://x.com/aniketh_pawar', icon: Twitter },
-    { name: 'Email', href: 'mailto:anikethpawar.dev@gmail.com', icon: Mail },
+    { name: 'GitHub', href: 'https://github.com/solankivedant10', icon: Github },
+    { name: 'LinkedIn', href: 'https://www.linkedin.com/in/vedants01', icon: Linkedin },
+    { name: 'Email', href: 'mailto:vedants1968@gmail.com', icon: Mail },
 ]
 
 export function Contact() {

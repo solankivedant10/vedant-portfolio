@@ -1,6 +1,13 @@
+import { Metadata } from "next";
 import { Header } from "@/components/Header";
 import Hero from "@/components/Hero";
 import { TechStack } from "@/components/TechStack";
+import { LetsWorkTogether } from "@/components/LetsWorkTogether";
+
+export const metadata: Metadata = {
+  title: "Vedant Solanki | Full Stack Developer",
+  description: "Software Developer specialized in building high-performance, secure web applications and autonomous agents.",
+};
 
 export default function Home() {
   return (
@@ -14,8 +21,8 @@ export default function Home() {
       {/* Tech Stack (New Grid) */}
       <TechStack />
 
-      {/* Note: Projects, Garage, Blog, and Contact are now on their own pages.
-          We do not render them here to keep the home page clean. */}
+      {/* CTA Section - Perfect way to end the home page */}
+      <LetsWorkTogether />
     </main>
   );
 }

@@ -4,34 +4,26 @@ import { TechStack } from "@/components/TechStack";
 import { Badge } from "@/components/ui/badge";
 
 export const metadata: Metadata = {
-    title: "Experience | Aniketh Pawar",
+    title: "Experience | Vedant Solanki",
     description: "My professional journey and technical expertise.",
 };
 
 const experiences = [
     {
-        company: "Stealth Startup",
-        role: "Full Stack Developer",
-        date: "Aug 2024 - Oct 2024",
+        company: "InfiJobs LLC",
+        role: "Software Developer",
+        date: "Oct 2025 - Present",
         type: "Full-time",
-        description: "Building the core product from ground up. Working across the entire stack to ship features fast while maintaining code quality.",
-        stack: ["React", "Node.js", "PostgreSQL", "AWS"],
+        description: "Architected a career platform with 100% type-safety. Reduced load times by ~40% via manual Vite chunk splitting and engineered a serverless AI code evaluator using Google Gemini 2.0.",
+        stack: ["React 19", "TypeScript", "Supabase", "PostgreSQL", "Gemini API"],
     },
     {
-        company: "Manan Network",
-        role: "Frontend Developer",
-        date: "Sep 2023 - Jan 2024",
+        company: "LogicRain Technologies",
+        role: "Data Science Intern",
+        date: "Jan 2025 - Apr 2025",
         type: "Internship",
-        description: "Led frontend development for Web3 dashboard. Improved load times by 40% through code optimization and lazy loading strategies.",
-        stack: ["React", "TypeScript", "Web3.js", "Tailwind"],
-    },
-    {
-        company: "Tech Elecon",
-        role: "Software Developer Intern",
-        date: "May 2024 - Aug 2024",
-        type: "Internship",
-        description: "Developed a signature verification system using YOLOv5 and PyTorch. Worked on enhancing accuracy and deployment.",
-        stack: ["Python", "YOLOv5", "PyTorch", "Computer Vision"],
+        description: "Developed a signature verification model achieving 95% accuracy using YOLOv5. Engineered an OpenCV preprocessing pipeline to normalize inputs and minimize false positives.",
+        stack: ["Python", "YOLOv5", "PyTorch", "OpenCV", "NumPy"],
     }
 ];
 

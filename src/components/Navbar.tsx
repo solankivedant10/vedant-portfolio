@@ -4,26 +4,24 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion } from 'framer-motion'
-import { Menu, X, Github, Linkedin, Twitter, Mail } from 'lucide-react'
+import { Menu, X, Github, Linkedin, Mail } from 'lucide-react'
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet'
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
 
 const navItems = [
     { path: '/', label: 'Home' },
-    { path: '/about', label: 'About' },
-    { path: '/#experience', label: 'Experience' },
-    { path: '/#projects', label: 'Projects' },
+    { path: '/experience', label: 'Experience' },
+    { path: '/projects', label: 'Projects' },
     { path: '/garage', label: '🔧 Garage', highlight: true },
     { path: '/blog', label: 'Blog' },
-    { path: '/#contact', label: 'Contact' },
+    { path: '/contact', label: 'Contact' },
 ]
 
 const socials = [
-    { name: 'GitHub', href: 'https://github.com/ANIKETHPAWAR', icon: Github },
-    { name: 'LinkedIn', href: 'https://www.linkedin.com/in/aniketh-pawar-070162210', icon: Linkedin },
-    { name: 'Twitter', href: 'https://x.com/aniketh_pawar', icon: Twitter },
-    { name: 'Email', href: 'mailto:anikethpawar.dev@gmail.com', icon: Mail },
+    { name: 'GitHub', href: 'https://github.com/solankivedant10', icon: Github },
+    { name: 'LinkedIn', href: 'https://www.linkedin.com/in/vedants01', icon: Linkedin },
+    { name: 'Email', href: 'mailto:vedants1968@gmail.com', icon: Mail },
 ]
 
 export function Navbar() {
@@ -33,7 +31,6 @@ export function Navbar() {
 
     // Hydration-safe time update
     useEffect(() => {
-        // Use requestAnimationFrame to avoid synchronous state update warning
         const handle = requestAnimationFrame(() => setTime(new Date()))
         const timer = setInterval(() => setTime(new Date()), 1000)
         return () => {
@@ -83,10 +80,10 @@ export function Navbar() {
                     {/* Logo / Name */}
                     <Link href="/" className="flex items-center gap-2 sm:gap-3">
                         <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-white flex items-center justify-center">
-                            <span className="text-black font-bold text-xs sm:text-sm">AP</span>
+                            <span className="text-black font-bold text-xs sm:text-sm">VS</span>
                         </div>
                         <div className="hidden sm:block">
-                            <p className="text-sm font-medium text-white">Aniketh Pawar</p>
+                            <p className="text-sm font-medium text-white">Vedant Solanki</p>
                             <p className="text-[10px] text-muted-foreground font-mono">
                                 {formatDate()} • {formatTime()}
                             </p>
@@ -98,9 +95,7 @@ export function Navbar() {
                         {navItems.map((item) => {
                             const isActive = item.path === '/'
                                 ? pathname === '/'
-                                : item.path.startsWith('/#')
-                                    ? pathname === '/'
-                                    : pathname.startsWith(item.path)
+                                : pathname.startsWith(item.path)
                             return (
                                 <Link
                                     key={item.path}
@@ -158,9 +153,7 @@ export function Navbar() {
                                         {navItems.map((item, index) => {
                                             const isActive = item.path === '/'
                                                 ? pathname === '/'
-                                                : item.path.startsWith('/#')
-                                                    ? pathname === '/'
-                                                    : pathname.startsWith(item.path)
+                                                : pathname.startsWith(item.path)
                                             return (
                                                 <motion.div
                                                     key={item.path}

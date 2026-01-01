@@ -6,33 +6,39 @@ import { Badge } from '@/components/ui/badge'
 import { Card, CardContent } from '@/components/ui/card'
 import { Lightbulb } from 'lucide-react'
 
+// Added hex colors for each technology
 const techStack = [
     // Languages
-    { name: 'JavaScript', category: 'Languages' },
-    { name: 'TypeScript', category: 'Languages' },
-    { name: 'Python', category: 'Languages' },
-    { name: 'C++', category: 'Languages' },
+    { name: 'JavaScript', category: 'Languages', color: '#F7DF1E' }, // Yellow
+    { name: 'TypeScript', category: 'Languages', color: '#3178C6' }, // Blue
+    { name: 'Python', category: 'Languages', color: '#3776AB' },     // Blue-Yellow
+    { name: 'C++', category: 'Languages', color: '#00599C' },        // Dark Blue
+
     // Frontend
-    { name: 'React', category: 'Frontend' },
-    { name: 'Next.js', category: 'Frontend' },
-    { name: 'Tailwind CSS', category: 'Frontend' },
-    { name: 'Framer Motion', category: 'Frontend' },
-    { name: 'HTML5', category: 'Frontend' },
-    { name: 'CSS3', category: 'Frontend' },
+    { name: 'React', category: 'Frontend', color: '#61DAFB' },       // Cyan
+    { name: 'Next.js', category: 'Frontend', color: '#ffffff' },     // White (since bg is dark)
+    { name: 'Tailwind CSS', category: 'Frontend', color: '#38B2AC' },// Teal
+    { name: 'Framer Motion', category: 'Frontend', color: '#E902B5' },// Pink
+    { name: 'HTML5', category: 'Frontend', color: '#E34F26' },       // Orange
+    { name: 'CSS3', category: 'Frontend', color: '#1572B6' },        // Blue
+
     // Backend
-    { name: 'Node.js', category: 'Backend' },
-    { name: 'Express', category: 'Backend' },
+    { name: 'Node.js', category: 'Backend', color: '#339933' },      // Green
+    { name: 'Express', category: 'Backend', color: '#ffffff' },      // White
+    { name: 'Supabase', category: 'Backend', color: '#3ECF8E' },     // Green
+    { name: 'Gemini API', category: 'Backend', color: '#8E75B2' },   // Purple
+
     // Databases
-    { name: 'MongoDB', category: 'Databases' },
-    { name: 'PostgreSQL', category: 'Databases' },
-    { name: 'Firebase', category: 'Databases' },
+    { name: 'MongoDB', category: 'Databases', color: '#47A248' },   // Green
+    { name: 'PostgreSQL', category: 'Databases', color: '#336791' }, // Blue
+    { name: 'Redis', category: 'Databases', color: '#DC382D' },      // Red
+
     // DevOps & Tools
-    { name: 'Git', category: 'Tools' },
-    { name: 'Docker', category: 'DevOps' },
-    { name: 'AWS', category: 'DevOps' },
-    { name: 'Vercel', category: 'DevOps' },
-    { name: 'Figma', category: 'Design' },
-    { name: 'VS Code', category: 'Tools' },
+    { name: 'Git', category: 'Tools', color: '#F05032' },            // Orange
+    { name: 'Docker', category: 'DevOps', color: '#2496ED' },        // Blue
+    { name: 'AWS', category: 'DevOps', color: '#FF9900' },           // Orange
+    { name: 'Vercel', category: 'DevOps', color: '#ffffff' },        // White
+    { name: 'Terraform', category: 'DevOps', color: '#7B42BC' },     // Purple
 ]
 
 export function Skills() {
@@ -75,8 +81,18 @@ export function Skills() {
                         animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
                         transition={{ delay: index * 0.03, duration: 0.3 }}
                     >
-                        <Badge variant="secondary" className="text-sm py-1.5 px-3 cursor-default hover:bg-secondary/80">
-                            {tech.name}
+                        <Badge
+                            variant="secondary"
+                            className="text-sm py-1.5 px-3 cursor-default hover:bg-secondary/80 flex items-center gap-1.5"
+                            style={{
+                                borderColor: `${tech.color}20` // Subtle colored border
+                            }}
+                        >
+                            <span
+                                className="w-2 h-2 rounded-full"
+                                style={{ backgroundColor: tech.color }}
+                            />
+                            <span style={{ color: '#e4e4e7' }}>{tech.name}</span>
                         </Badge>
                     </motion.div>
                 ))}
@@ -92,12 +108,12 @@ export function Skills() {
                     <CardContent className="p-6">
                         <div className="flex items-start gap-4">
                             <div className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center shrink-0">
-                                <Lightbulb className="w-5 h-5 text-muted-foreground" />
+                                <Lightbulb className="w-5 h-5 text-yellow-500" />
                             </div>
                             <div>
                                 <h3 className="font-medium text-foreground mb-1">Currently Learning</h3>
                                 <p className="text-sm text-muted-foreground">
-                                    Exploring system design patterns, diving deeper into Web3 technologies, and building my knowledge in DevOps and cloud infrastructure.
+                                    Exploring autonomous agent architectures (Kestra, LangChain), diving deeper into RAG pipelines, and mastering system design for scalable AI platforms.
                                 </p>
                             </div>
                         </div>

@@ -8,21 +8,21 @@ import { Badge } from '@/components/ui/badge'
 const experiences = [
     {
         id: 1,
-        role: 'Full Stack Developer',
-        company: 'Stealth Startup',
+        role: 'Software Developer',
+        company: 'InfiJobs LLC',
         type: 'Full-time',
-        duration: 'Aug 2025 - Oct 2025',
-        description: 'Building the core product from ground up. Working across the entire stack to ship features fast while maintaining code quality.',
-        skills: ['React', 'Node.js', 'PostgreSQL', 'AWS'],
+        duration: 'Oct 2025 - Present',
+        description: 'Architected a career platform with 100% type-safety. Reduced load times by ~40% via manual Vite chunk splitting and engineered a serverless AI code evaluator using Google Gemini 2.0.',
+        skills: ['React 19', 'TypeScript', 'Supabase', 'PostgreSQL', 'Gemini API'],
     },
     {
         id: 2,
-        role: 'Frontend Developer',
-        company: 'Mande Network',
+        role: 'Data Science Intern',
+        company: 'LogicRain Technologies',
         type: 'Internship',
-        duration: 'Sep 2024 - Jan 2025',
-        description: 'Led frontend development for Web3 dashboard. Improved load times by 40% through code optimization and lazy loading strategies.',
-        skills: ['React', 'TypeScript', 'Web3.js', 'Tailwind'],
+        duration: 'Jan 2025 - Apr 2025',
+        description: 'Developed a signature verification model achieving 95% accuracy using YOLOv5. Engineered an OpenCV preprocessing pipeline to normalize inputs and minimize false positives.',
+        skills: ['Python', 'YOLOv5', 'PyTorch', 'OpenCV', 'NumPy'],
     }
 ]
 
@@ -35,23 +35,22 @@ const skills = [
     // Frontend
     { name: "React", category: "Frontend" },
     { name: "Tailwind CSS", category: "Frontend" },
-    { name: "Figma", category: "Frontend" },
+    { name: "Next.js", category: "Frontend" },
     // Backend
     { name: "Node.js", category: "Backend" },
     { name: "Express.js", category: "Backend" },
+    { name: "Supabase", category: "Backend" },
     // Databases
-    { name: "MongoDB", category: "Databases" },
     { name: "PostgreSQL", category: "Databases" },
-    { name: "MySQL", category: "Databases" },
-    { name: "Redis", category: "Databases" },
-    { name: "Firebase", category: "Databases" },
-    // DevOps
+    { name: "MongoDB", category: "Databases" },
+    // DevOps & Cloud
     { name: "AWS", category: "DevOps" },
     { name: "Docker", category: "DevOps" },
     { name: "Vercel", category: "DevOps" },
     // Tools
     { name: "Git", category: "Tools" },
     { name: "Postman", category: "Tools" },
+    { name: "Gemini API", category: "Tools" },
 ]
 
 export function Experience() {
