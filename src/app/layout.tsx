@@ -3,7 +3,6 @@ import { Bricolage_Grotesque, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import Footer from "@/components/Footer";
-// FIX 1: Import GlobalNavBar (which holds your links), NOT NavBar
 import { GlobalNavBar } from "@/components/GlobalNavBar";
 
 const bricolage = Bricolage_Grotesque({
@@ -19,12 +18,20 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  // FIX: Added metadataBase to resolve the build warning
+  metadataBase: new URL('https://vedantsolanki.com'), // Replace with your actual domain when live
   title: {
     default: "Vedant Solanki | Software Developer",
     template: "%s | Vedant Solanki"
   },
   description: "Software Developer specialized in building high-performance web applications, autonomous agents, and scalable AI platforms.",
   keywords: ["Software Developer", "React", "Next.js", "TypeScript", "Node.js", "Gemini API", "Kestra", "Tailwind CSS"],
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://vedantsolanki.com",
+    siteName: "Vedant Solanki Portfolio",
+  },
 };
 
 export default function RootLayout({
@@ -40,16 +47,20 @@ export default function RootLayout({
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
+          enableSystem={false}
           forcedTheme="dark"
           disableTransitionOnChange
         >
+          {/* Background Layering */}
           <div className="fixed inset-0 grid-bg pointer-events-none -z-10" />
           <div className="viewport-glow" />
 
-          {/* FIX 2: Use GlobalNavBar. This component passes the 'items' prop automatically. */}
           <GlobalNavBar />
 
-          {children}
+          {/* Added a min-h-screen to ensure the footer stays at bottom on short pages */}
+          <main className="min-h-screen relative z-10">
+            {children}
+          </main>
 
           <Footer />
         </ThemeProvider>

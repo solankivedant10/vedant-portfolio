@@ -51,6 +51,8 @@
   --animate-marquee: marquee var(--duration) linear infinite;
   --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
   --animate-blob: blob 7s infinite;
+  --animate-pulse-slow: pulse-slow 12s ease-in-out infinite;
+  /* Added pulse-slow animation */
 
   @keyframes spin-slow {
     from {
@@ -111,12 +113,22 @@
       transform: translate(0px, 0px) scale(1);
     }
   }
+
+  @keyframes pulse-slow {
+
+    0%,
+    100% {
+      opacity: 0.7;
+    }
+
+    50% {
+      opacity: 1;
+    }
+  }
 }
 
-/* Force dark mode by default - Aniketh Zinc 950 aesthetic */
 :root {
   --radius: 0.625rem;
-  /* Dark mode values as default (Zinc 950 background) */
   --background: oklch(0.141 0.005 285.823);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.21 0.006 285.885);
@@ -150,7 +162,6 @@
   --sidebar-ring: oklch(0.552 0.016 285.938);
 }
 
-/* Keep .dark class for compatibility */
 .dark {
   --background: oklch(0.141 0.005 285.823);
   --foreground: oklch(0.985 0 0);
@@ -199,7 +210,6 @@
   }
 }
 
-/* Grid background pattern */
 .grid-bg {
   background-image:
     linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
@@ -211,7 +221,6 @@
   z-index: 0;
 }
 
-/* Subtle viewport edge glow - matching reference site */
 .viewport-glow {
   position: fixed;
   inset: 0;
@@ -221,4 +230,6 @@
     radial-gradient(ellipse 80% 50% at 50% -20%, rgba(99, 102, 241, 0.15), transparent),
     radial-gradient(ellipse 60% 40% at 100% 50%, rgba(99, 102, 241, 0.08), transparent),
     radial-gradient(ellipse 60% 40% at 0% 50%, rgba(99, 102, 241, 0.08), transparent);
+  animation: pulse-slow 12s ease-in-out infinite;
+  /* Applied the pulse-slow animation here */
 }

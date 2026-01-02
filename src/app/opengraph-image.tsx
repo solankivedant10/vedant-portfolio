@@ -2,7 +2,7 @@ import { ImageResponse } from 'next/og'
 
 export const runtime = 'edge'
 
-export const alt = 'Vedant Solanki - Full Stack Developer & AI Enthusiast'
+export const alt = 'Vedant Solanki - Software Developer & AI Enthusiast'
 export const size = {
     width: 1200,
     height: 630,
@@ -20,31 +20,41 @@ export default async function Image() {
                     flexDirection: 'column',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    backgroundColor: '#0a0a0a',
-                    backgroundImage: 'linear-gradient(to bottom right, #0a0a0a, #1a1a2e)',
+                    backgroundColor: '#09090b', // Zinc 950
+                    backgroundImage: 'radial-gradient(circle at top, #1e1b4b 0%, #09090b 100%)', // Subtle Indigo top depth
                 }}
             >
-                {/* Gradient Orbs */}
+                {/* Background Grid Pattern (Simplified for OG) */}
+                <div 
+                    style={{
+                        position: 'absolute',
+                        inset: 0,
+                        backgroundImage: 'linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px)',
+                        backgroundSize: '40px 40px',
+                    }}
+                />
+
+                {/* Accent Orbs */}
                 <div
                     style={{
                         position: 'absolute',
-                        top: '-100px',
-                        left: '-100px',
-                        width: '400px',
-                        height: '400px',
+                        top: '-10%',
+                        left: '-5%',
+                        width: '600px',
+                        height: '600px',
                         borderRadius: '50%',
-                        background: 'radial-gradient(circle, rgba(139, 92, 246, 0.3) 0%, transparent 70%)',
+                        background: 'radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%)',
                     }}
                 />
                 <div
                     style={{
                         position: 'absolute',
-                        bottom: '-100px',
-                        right: '-100px',
-                        width: '400px',
-                        height: '400px',
+                        bottom: '-10%',
+                        right: '-5%',
+                        width: '600px',
+                        height: '600px',
                         borderRadius: '50%',
-                        background: 'radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, transparent 70%)',
+                        background: 'radial-gradient(circle, rgba(16, 185, 129, 0.05) 0%, transparent 70%)',
                     }}
                 />
 
@@ -58,47 +68,42 @@ export default async function Image() {
                         zIndex: 10,
                     }}
                 >
-                    {/* Name */}
                     <div
                         style={{
-                            fontSize: 72,
+                            fontSize: 84,
                             fontWeight: 'bold',
-                            color: '#fafafa',
-                            marginBottom: 16,
-                            letterSpacing: '-0.02em',
+                            color: '#ffffff',
+                            marginBottom: 8,
+                            letterSpacing: '-0.04em',
                         }}
                     >
                         Vedant Solanki
                     </div>
 
-                    {/* Tagline */}
                     <div
                         style={{
                             fontSize: 32,
-                            color: '#a3a3a3',
-                            marginBottom: 40,
+                            fontWeight: 500,
+                            color: '#a1a1aa', // Zinc 400
+                            marginBottom: 48,
                         }}
                     >
-                        Full Stack Developer & AI Enthusiast
+                        Software Developer & AI Enthusiast
                     </div>
 
-                    {/* Tech Stack */}
-                    <div
-                        style={{
-                            display: 'flex',
-                            gap: 16,
-                        }}
-                    >
-                        {['Next.js', 'TypeScript', 'AI/ML', 'Cloud'].map((tech) => (
+                    {/* Tech Badges */}
+                    <div style={{ display: 'flex', gap: 12 }}>
+                        {['Next.js', 'TypeScript', 'Autonomous Agents', 'Gemini'].map((tech) => (
                             <div
                                 key={tech}
                                 style={{
-                                    padding: '8px 20px',
-                                    borderRadius: 24,
-                                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                                    border: '1px solid rgba(255, 255, 255, 0.2)',
-                                    color: '#e5e5e5',
-                                    fontSize: 18,
+                                    padding: '10px 24px',
+                                    borderRadius: 30,
+                                    backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                                    color: '#f4f4f5',
+                                    fontSize: 20,
+                                    fontWeight: 600,
                                 }}
                             >
                                 {tech}
@@ -107,21 +112,20 @@ export default async function Image() {
                     </div>
                 </div>
 
-                {/* Website URL */}
                 <div
                     style={{
                         position: 'absolute',
                         bottom: 40,
-                        fontSize: 20,
-                        color: '#737373',
+                        fontSize: 22,
+                        fontWeight: 600,
+                        color: '#52525b', // Zinc 600
+                        letterSpacing: '0.1em',
                     }}
                 >
-                    vedantsolanki.com
+                    VEDANTSOLANKI.COM
                 </div>
             </div>
         ),
-        {
-            ...size,
-        }
+        { ...size }
     )
 }
