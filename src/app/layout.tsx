@@ -4,6 +4,8 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import Footer from "@/components/Footer";
 import { GlobalNavBar } from "@/components/GlobalNavBar";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const bricolage = Bricolage_Grotesque({
   variable: "--font-bricolage",
@@ -45,7 +47,6 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={`${bricolage.variable} ${geistMono.variable} font-sans antialiased bg-background text-foreground`}
-        // FIX: Added suppressHydrationWarning here to prevent Grammarly/extensions from triggering console errors
         suppressHydrationWarning
       >
         <ThemeProvider
@@ -66,6 +67,10 @@ export default function RootLayout({
           </main>
 
           <Footer />
+
+          {/* Vercel Monitoring Components */}
+          <Analytics />
+          <SpeedInsights />
         </ThemeProvider>
       </body>
     </html>
