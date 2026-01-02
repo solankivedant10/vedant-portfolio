@@ -1,36 +1,99 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Vedant Solanki - Portfolio
 
-## Getting Started
+A modern, dark-mode-first portfolio website built with Next.js 14
 
-First, run the development server:
+✨ Features
+
+- Dark Mode First - Premium zinc-950 aesthetic with subtle viewport glow
+- Bricolage Grotesque Typography - Modern, bold font styling
+- Glassmorphism Navigation - Sticky navbar with backdrop blur and "Available" badge
+- Typewriter Hero - Dynamic headline with rotating phrases
+- Static Tech Grid - Hover-lift effect on technology icons
+- Vertical Project Cards - Category badges with color-coded labels
+- The Garage - WIP section with progress bars and glowing card effects
+- Cal.com Integration - "Book a Call" modal for scheduling
+- SEO Optimized - Dynamic sitemap, robots.txt, and OpenGraph images
+
+🛠️ Tech Stack
+
+| Category | Technologies |
+|----------|--------------|
+| Framework | Next.js 14 (App Router) |
+| Language | TypeScript |
+| Styling | Tailwind CSS v4 |
+| Animation | Framer Motion |
+| Components | Shadcn UI (Radix primitives) |
+| Fonts | Bricolage Grotesque (next/font) |
+| Deployment | Vercel |
+
+📦 Quick Start
 
 ```bash
+# Install dependencies
+npm install
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Build for production
+npm run build
+
+# Run linting
+npm run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the site.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+📁 Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+├── app/
+│   ├── layout.tsx          # Root layout with fonts & providers
+│   ├── page.tsx             # Homepage
+│   ├── globals.css          # Tailwind + custom CSS
+│   ├── sitemap.ts           # Dynamic sitemap generation
+│   ├── robots.ts            # Robots.txt configuration
+│   ├── blog/                # Blog pages
+│   ├── projects/            # Projects page
+│   ├── garage/              # The Garage (WIP section)
+│   ├── experience/          # Experience timeline
+│   └── contact/             # Contact page
+├── components/
+│   ├── ui/                  # Shadcn primitives
+│   ├── Hero.tsx             # Hero section with typewriter
+│   ├── TechStack.tsx        # Static grid with hover effects
+│   ├── FeaturedProjects.tsx # Vertical project cards
+│   ├── Experience.tsx       # Timeline component
+│   ├── BookingModal.tsx     # Cal.com integration
+│   └── ...
+└── lib/
+    └── utils.ts             # cn() utility
+```
 
-## Learn More
+🎨 Design System
 
-To learn more about Next.js, take a look at the following resources:
+| Token | Value | Usage |
+|-------|-------|-------|
+| `--background` | zinc-950 | Page background |
+| `--foreground` | zinc-50 | Primary text |
+| `--card` | zinc-900 | Card backgrounds |
+| `--muted-foreground` | zinc-400 | Subtitles, meta |
+| `--primary` | white | CTAs, active states |
+| `--accent` | emerald-500 | "Available" badge |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+🚀 Deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Deploy to Vercel with one click:
 
-## Deploy on Vercel
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/solankivedant10/Portfolio)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Or manually:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+vercel --prod
+```
+
+📄 License
+
+MIT © 2025 Vedant Solanki
