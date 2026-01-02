@@ -23,6 +23,9 @@ export const metadata: Metadata = {
     default: "Vedant Solanki | Software Developer",
     template: "%s | Vedant Solanki"
   },
+  verification: {
+    google: "44FJZ1WyO9-406gHf_Q2i6BTIPIJAo0WcXXeMOsrovE"
+  },
   description: "Software Developer specialized in building high-performance web applications, autonomous agents, and scalable AI platforms.",
   keywords: ["Software Developer", "React", "Next.js", "TypeScript", "Node.js", "Gemini API", "Kestra", "Tailwind CSS"],
   openGraph: {
