@@ -6,7 +6,6 @@ import { Download, ExternalLink, Github } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
-import { Skills } from '@/components/Skills'
 
 // CONSTANTS - Easy to update
 const RESUME_LINK = "https://drive.google.com/file/d/1Ra2nKCzuggAC7HkwFXEGR3mGAyJTvasR/view?usp=sharing"
@@ -104,7 +103,7 @@ export default function AboutContent() {
                                 </a>
                             </Button>
                         </div>
-                    </motion.div>          
+                    </motion.div>
 
                     <Separator className="my-16" />
 

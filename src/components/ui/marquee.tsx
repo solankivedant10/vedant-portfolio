@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import React from "react";
 
 interface MarqueeProps {
   className?: string;
@@ -7,7 +8,6 @@ interface MarqueeProps {
   children?: React.ReactNode;
   vertical?: boolean;
   repeat?: number;
-  [key: string]: any;
 }
 
 export function Marquee({
@@ -17,11 +17,9 @@ export function Marquee({
   children,
   vertical = false,
   repeat = 4,
-  ...props
 }: MarqueeProps) {
   return (
     <div
-      {...props}
       className={cn(
         "group flex overflow-hidden p-2 [--duration:40s] [--gap:1rem] gap-(--gap)",
         {
@@ -50,11 +48,15 @@ export function Marquee({
   );
 }
 
-// Just a wrapper for items, though standard div works too
-export function MarqueeItem({ className, children, ...props }: any) {
-    return (
-        <div className={cn("flex items-center", className)} {...props}>
-            {children}
-        </div>
-    )
+interface MarqueeItemProps {
+  className?: string;
+  children?: React.ReactNode;
+}
+
+export function MarqueeItem({ className, children }: MarqueeItemProps) {
+  return (
+    <div className={cn("flex items-center", className)}>
+      {children}
+    </div>
+  )
 }

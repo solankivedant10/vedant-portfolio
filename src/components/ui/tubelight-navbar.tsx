@@ -4,16 +4,15 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion } from 'framer-motion'
-import { Menu, X, Github, Linkedin, Mail } from 'lucide-react'
+import { Menu, X, Github, Linkedin, Mail, LucideIcon } from 'lucide-react'
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet'
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
 
-// 1. Define Props to match GlobalNavbar
 interface NavItem {
     name: string
     url: string
-    icon?: any
+    icon?: LucideIcon
 }
 
 interface NavBarProps {
@@ -41,12 +40,8 @@ export function NavBar({ items }: NavBarProps) {
         }
     }, [])
 
-    // Close mobile menu on route change
-    useEffect(() => {
-        if (isOpen) {
-            setIsOpen(false)
-        }
-    }, [pathname])
+    // Note: Mobile menu closes automatically via SheetClose on link clicks
+    // No need for useEffect to track pathname changes
 
     const formatDate = () => {
         if (!time) return ''
@@ -79,7 +74,7 @@ export function NavBar({ items }: NavBarProps) {
         >
             <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
                 <nav className="flex items-center justify-between px-3 sm:px-4 py-2 rounded-xl bg-background/80 backdrop-blur-md border border-white/10 shadow-lg">
-                    
+
                     {/* Logo / Name */}
                     <Link href="/" className="flex items-center gap-2 sm:gap-3">
                         <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-white flex items-center justify-center">
@@ -96,23 +91,22 @@ export function NavBar({ items }: NavBarProps) {
                     {/* Desktop Navigation */}
                     <div className="hidden md:flex items-center gap-1">
                         {items.map((item) => {
-                            const isActive = item.url === '/' 
-                                ? pathname === '/' 
+                            const isActive = item.url === '/'
+                                ? pathname === '/'
                                 : pathname.startsWith(item.url)
-                            
+
                             const isGarage = item.name === 'Garage'
 
                             return (
                                 <Link
                                     key={item.url}
                                     href={item.url}
-                                    className={`px-3 py-1.5 rounded-md text-sm transition-colors ${
-                                        isActive
-                                            ? 'text-white bg-secondary'
-                                            : isGarage
-                                                ? 'text-indigo-400 hover:text-indigo-300 hover:bg-secondary/50'
-                                                : 'text-muted-foreground hover:text-white hover:bg-secondary/50'
-                                    }`}
+                                    className={`px-3 py-1.5 rounded-md text-sm transition-colors ${isActive
+                                        ? 'text-white bg-secondary'
+                                        : isGarage
+                                            ? 'text-indigo-400 hover:text-indigo-300 hover:bg-secondary/50'
+                                            : 'text-muted-foreground hover:text-white hover:bg-secondary/50'
+                                        }`}
                                 >
                                     {item.name} {isGarage && '🔧'}
                                 </Link>
@@ -158,10 +152,10 @@ export function NavBar({ items }: NavBarProps) {
                                 <nav className="flex-1 p-4">
                                     <div className="space-y-1">
                                         {items.map((item, index) => {
-                                            const isActive = item.url === '/' 
-                                                ? pathname === '/' 
+                                            const isActive = item.url === '/'
+                                                ? pathname === '/'
                                                 : pathname.startsWith(item.url)
-                                            
+
                                             const isGarage = item.name === 'Garage'
 
                                             return (
@@ -174,13 +168,12 @@ export function NavBar({ items }: NavBarProps) {
                                                     <SheetClose asChild>
                                                         <Link
                                                             href={item.url}
-                                                            className={`block px-4 py-3 rounded-lg text-sm transition-colors ${
-                                                                isActive
-                                                                    ? 'bg-secondary text-white'
-                                                                    : isGarage
-                                                                        ? 'text-indigo-400 hover:text-indigo-300 hover:bg-secondary/50'
-                                                                        : 'text-muted-foreground hover:text-white hover:bg-secondary/50'
-                                                            }`}
+                                                            className={`block px-4 py-3 rounded-lg text-sm transition-colors ${isActive
+                                                                ? 'bg-secondary text-white'
+                                                                : isGarage
+                                                                    ? 'text-indigo-400 hover:text-indigo-300 hover:bg-secondary/50'
+                                                                    : 'text-muted-foreground hover:text-white hover:bg-secondary/50'
+                                                                }`}
                                                         >
                                                             {item.name} {isGarage && '🔧'}
                                                         </Link>
