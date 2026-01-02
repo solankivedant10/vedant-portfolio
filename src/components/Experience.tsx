@@ -62,7 +62,7 @@ export function Experience() {
         content: (
             <div>
                 <div className="flex flex-col gap-2 mb-4">
-                    <h2 className="text-3xl font-bold">Experience that matters.</h2>
+                    <h2 className="text-3xl font-bold"></h2>
                     <h3 className="text-2xl font-bold text-foreground">
                         {exp.company}
                     </h3>

@@ -1,7 +1,7 @@
 "use client"
 
 import React from "react"
-import { motion } from "motion/react"
+import { motion } from "framer-motion" // Changed from "motion/react"
 import Link from "next/link"
 import { LucideIcon } from "lucide-react"
 import { cn } from "@/lib/utils"
@@ -23,7 +23,7 @@ export function NavBar({ items, className }: NavBarProps) {
 
     return (
         <div className={cn("fixed bottom-0 sm:top-0 left-1/2 -translate-x-1/2 z-9999 mb-6 sm:pt-6 w-full sm:w-auto px-4 sm:px-0", className)}>
-            <div className="flex items-center gap-1 bg-zinc-950/90 border border-white/6 backdrop-blur-md py-2 px-2 rounded-xl shadow-lg">
+            <div className="flex items-center gap-1 bg-zinc-950/90 border border-white/10 backdrop-blur-md py-2 px-2 rounded-xl shadow-lg">
 
                 {/* Nav Items */}
                 {items.map((item) => {
@@ -37,7 +37,7 @@ export function NavBar({ items, className }: NavBarProps) {
                             className={cn(
                                 "relative cursor-pointer text-sm font-medium px-4 py-2 rounded-lg transition-colors",
                                 "text-zinc-400 hover:text-white",
-                                isActive && "bg-zinc-800 text-white"
+                                isActive && "text-white"
                             )}
                         >
                             <span className="hidden md:inline">{item.name}</span>
@@ -54,7 +54,6 @@ export function NavBar({ items, className }: NavBarProps) {
                                 <motion.div
                                     layoutId="active-pill"
                                     className="absolute inset-0 w-full bg-zinc-800 rounded-lg -z-10"
-                                    initial={false}
                                     transition={{
                                         type: "spring",
                                         stiffness: 400,

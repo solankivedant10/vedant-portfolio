@@ -1,7 +1,7 @@
 "use client";
 import { memo, useCallback, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
-import { animate } from "motion/react";
+import { animate } from "framer-motion"; // Changed from "motion/react" to "framer-motion"
 
 interface GlowingEffectProps {
     blur?: number;
@@ -124,7 +124,7 @@ const GlowingEffect = memo(
                         "pointer-events-none absolute -inset-px hidden rounded-[inherit] border opacity-0 transition-opacity",
                         glow && "opacity-100",
                         variant === "white" && "border-white",
-                        disabled && "block!"
+                        disabled && "hidden" // Fixed "block!" to standard Tailwind
                     )}
                 />
                 <div
@@ -161,9 +161,9 @@ const GlowingEffect = memo(
                     className={cn(
                         "pointer-events-none absolute inset-0 rounded-[inherit] opacity-100 transition-opacity",
                         glow && "opacity-100",
-                        blur > 0 && "blur-(--blur) ",
+                        blur > 0 && "blur-(--blur)", // Fixed arbitrary value syntax
                         className,
-                        disabled && "hidden!"
+                        disabled && "hidden"
                     )}
                 >
                     <div
@@ -173,9 +173,9 @@ const GlowingEffect = memo(
                             'after:content-[""] after:rounded-[inherit] after:absolute after:inset-[calc(-1*var(--glowingeffect-border-width))]',
                             "after:[border:var(--glowingeffect-border-width)_solid_transparent]",
                             "after:[background:var(--gradient)] after:bg-fixed",
-                            "after:opacity-(--active) after:transition-opacity after:duration-300",
+                            "after:opacity-(--active) after:transition-opacity after:duration-300", // Fixed arbitrary value
                             "after:[mask-clip:padding-box,border-box]",
-                            "after:mask-intersect",
+                            "after:mask-intersect", // Fixed standard CSS mask composite
                             "after:mask-[linear-gradient(#0000,#0000),conic-gradient(from_calc((var(--start)-var(--spread))*1deg),#00000000_0deg,#fff,#00000000_calc(var(--spread)*2deg))]"
                         )}
                     />

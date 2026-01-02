@@ -3,6 +3,9 @@ import { Header } from "@/components/Header";
 import Hero from "@/components/Hero";
 import { TechStack } from "@/components/TechStack";
 import { LetsWorkTogether } from "@/components/LetsWorkTogether";
+import Experience from "@/components/Experience";
+import Footer from "@/components/Footer";
+import GaragePage from "./garage/page";
 
 export const metadata: Metadata = {
   title: "Vedant Solanki | Full Stack Developer",
@@ -21,8 +24,16 @@ export default function Home() {
       {/* Tech Stack (New Grid) */}
       <TechStack />
 
+      {/* Experience Section */}
+      <Experience />
+
+      <GaragePage />
+
       {/* CTA Section - Perfect way to end the home page */}
       <LetsWorkTogether />
+
+      {/* Footer */}
+      <Footer />
     </main>
   );
 }

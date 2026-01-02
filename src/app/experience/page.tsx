@@ -19,7 +19,7 @@ const experiences = [
     },
     {
         company: "LogicRain Technologies",
-        role: "Data Science Intern",
+        role: "Software Engineer Intern",
         date: "Jan 2025 - Apr 2025",
         type: "Internship",
         description: "Developed a signature verification model achieving 95% accuracy using YOLOv5. Engineered an OpenCV preprocessing pipeline to normalize inputs and minimize false positives.",
@@ -35,38 +35,38 @@ export default function ExperiencePage() {
                 {/* Work Experience Section */}
                 <section className="space-y-8">
                     <div className="space-y-2">
-                        <h1 className="text-3xl font-bold text-white">Work Experience</h1>
-                        <p className="text-zinc-400">My professional journey in software development.</p>
+                        <h1 className="text-3xl font-bold text-foreground">Work Experience</h1>
+                        <p className="text-muted-foreground">My professional journey in software development.</p>
                     </div>
 
                     <div className="grid gap-6">
                         {experiences.map((exp) => (
                             <div
                                 key={exp.company}
-                                className="group relative p-6 rounded-xl border border-zinc-800 bg-zinc-900/30 hover:bg-zinc-900/50 transition-colors"
+                                className="group relative p-6 rounded-xl border border-border bg-card/50 hover:bg-card transition-colors"
                             >
                                 <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4">
                                     <div>
-                                        <h3 className="text-xl font-semibold text-white group-hover:text-primary transition-colors">
+                                        <h3 className="text-xl font-semibold text-foreground group-hover:text-primary transition-colors">
                                             {exp.role}
                                         </h3>
-                                        <p className="text-zinc-400 font-medium">{exp.company}</p>
+                                        <p className="text-muted-foreground font-medium">{exp.company}</p>
                                     </div>
                                     <div className="flex flex-col sm:items-end gap-1">
-                                        <span className="text-sm text-zinc-500 font-mono">{exp.date}</span>
-                                        <Badge variant="secondary" className="w-fit text-xs bg-zinc-800 hover:bg-zinc-700 text-zinc-300 border-zinc-700">
+                                        <span className="text-sm text-muted-foreground font-mono">{exp.date}</span>
+                                        <Badge variant="secondary" className="w-fit text-xs">
                                             {exp.type}
                                         </Badge>
                                     </div>
                                 </div>
 
-                                <p className="text-zinc-400 mb-6 leading-relaxed">
+                                <p className="text-muted-foreground mb-6 leading-relaxed">
                                     {exp.description}
                                 </p>
 
                                 <div className="flex flex-wrap gap-2">
                                     {exp.stack.map((tech) => (
-                                        <span key={tech} className="text-xs px-2 py-1 rounded bg-zinc-800/50 text-zinc-400 border border-zinc-800">
+                                        <span key={tech} className="text-xs px-2 py-1 rounded bg-secondary text-secondary-foreground border border-border">
                                             {tech}
                                         </span>
                                     ))}
@@ -84,8 +84,8 @@ export default function ExperiencePage() {
                 {/* GitHub Heatmap */}
                 <section className="space-y-6">
                     <div className="space-y-1">
-                        <h2 className="text-2xl font-bold text-white">Coding Activity</h2>
-                        <p className="text-zinc-400 text-sm">My open source contributions over the last year.</p>
+                        <h2 className="text-2xl font-bold text-foreground">Coding Activity</h2>
+                        <p className="text-muted-foreground text-sm">My open source contributions over the last year.</p>
                     </div>
                     <GitHubHeatmap />
                 </section>

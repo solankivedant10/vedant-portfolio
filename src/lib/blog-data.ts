@@ -33,14 +33,6 @@ export const blogPosts: BlogPost[] = [
         featured: true,
         content: `
 
-
-Key Changes Applied:
-
-Title: Changed to a "How-to" format with numbers to boost engagement (Tip: *"36% of people preferred titles with numbers"*).
-Structure: clear Problem/Solution headers for skimmability (Tip: *"Write with the idea that someone will be able to skim"*).
-Visuals: Added placeholders for architecture diagrams to break up text (Tip: *"Images can also help break up what might seem like an endless sea of words"*).
-Tone: Simplified the language to be more direct (Tip: *"Write as if you are talking to a High-Schooler"*).
-
 How I Built a Serverless AI Platform: 3 Key Lessons for Junior Developers
 
 Moving from tutorials to building an actual product is intimidating. I had built small projects before, but InfiJobs was the first time I had to look beyond just "making things work" and focus on real-world engineering like security, performance, and scalability.
@@ -57,7 +49,7 @@ Platforms like LeetCode execute user code inside isolated containers (sandboxes)
 The Solution
 I used the Google Gemini 2.0 Flash API as a serverless evaluation engine.
 
-Instead of executing the code, I treated the user’s solution and the problem constraints as a prompt. I asked the AI to evaluate correctness, edge cases, and efficiency.
+Instead of executing the code, I treated the users solution and the problem constraints as a prompt. I asked the AI to evaluate correctness, edge cases, and efficiency.
 
 To ensure the output wasn't just random text, I enforced structured JSON responses that matched my TypeScript interfaces.
 

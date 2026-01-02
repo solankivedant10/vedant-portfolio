@@ -5,7 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
-import { Twitter, Instagram, Linkedin, Mail } from 'lucide-react';
+import { Github, Linkedin, Mail } from 'lucide-react';
 
 export const ContactSection = () => {
     const [formData, setFormData] = React.useState({
@@ -47,13 +47,13 @@ export const ContactSection = () => {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         console.log("Form submitted:", formData);
-        alert("Thanks for reaching out! (Demo)");
+        // Here you would typically connect to an API route or service like EmailJS/Resend
+        alert("Thanks for reaching out! I'll get back to you shortly.");
     };
 
     const projectTypeOptions = [
-        'Website', 'Mobile App', 'Web App', 'E-Commerce',
-        'Brand Identity', '3D & Animation', 'Marketing',
-        'Consulting', 'Other'
+        'Full Stack App', 'AI Integration', 'Landing Page', 'E-Commerce',
+        'mvp Development', 'Consulting', 'Other'
     ];
 
     return (
@@ -75,21 +75,28 @@ export const ContactSection = () => {
                     {/* Left Side: Title */}
                     <div className="flex flex-col justify-center space-y-8">
                         <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-foreground leading-tight">
-                            We can turn your <span className="text-primary">dream project</span> into reality.
+                            I can turn your <span className="text-primary">dream project</span> into reality.
                         </h1>
                         <p className="text-lg text-muted-foreground max-w-lg">
-                            Whether you need a stunning website, a complex web app, or a complete brand overhaul, we are ready to build it.
+                            Whether you need a stunning website, a complex AI-powered app, or a complete platform overhaul, I am ready to build it.
                         </p>
 
                         <div className="space-y-4">
                             <div className="flex items-center space-x-2 text-muted-foreground">
                                 <Mail className="w-5 h-5" />
-                                <a href="mailto:hello@aniketh.xyz" className="hover:text-primary transition-colors">hello@aniketh.xyz</a>
+                                <a href="mailto:vedants1968@gmail.com" className="hover:text-primary transition-colors">vedants1968@gmail.com</a>
                             </div>
                             <div className="flex gap-4">
-                                <Button variant="outline" size="icon" asChild><a href="#"><Twitter className="w-4 h-4" /></a></Button>
-                                <Button variant="outline" size="icon" asChild><a href="#"><Instagram className="w-4 h-4" /></a></Button>
-                                <Button variant="outline" size="icon" asChild><a href="#"><Linkedin className="w-4 h-4" /></a></Button>
+                                <Button variant="outline" size="icon" asChild>
+                                    <a href="https://github.com/solankivedant10" target="_blank" rel="noopener noreferrer">
+                                        <Github className="w-4 h-4" />
+                                    </a>
+                                </Button>
+                                <Button variant="outline" size="icon" asChild>
+                                    <a href="https://www.linkedin.com/in/vedants01" target="_blank" rel="noopener noreferrer">
+                                        <Linkedin className="w-4 h-4" />
+                                    </a>
+                                </Button>
                             </div>
                         </div>
                     </div>
@@ -110,7 +117,7 @@ export const ContactSection = () => {
                             </div>
 
                             <div className="space-y-2">
-                                <Label htmlFor="message">Tell us about your project</Label>
+                                <Label htmlFor="message">Tell me about your project</Label>
                                 <Textarea
                                     id="message"
                                     name="message"
