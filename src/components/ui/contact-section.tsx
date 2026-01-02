@@ -46,9 +46,9 @@ export const ContactSection = () => {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        console.log("Form submitted:", formData);
-        // Here you would typically connect to an API route or service like EmailJS/Resend
-        alert("Thanks for reaching out! I'll get back to you shortly.");
+        const subject = encodeURIComponent(`Project Inquiry: ${formData.projectType.join(', ') || 'General'}`);
+        const body = encodeURIComponent(`Hi Vedant,\n\nMy name is ${formData.name}.\n\n${formData.message}\n\nBest regards,\n${formData.name}`);
+        window.location.href = `mailto:vedants1968@gmail.com?subject=${subject}&body=${body}`;
     };
 
     const projectTypeOptions = [

@@ -65,82 +65,84 @@ const getCategoryColor = (category: string) => {
 
 export const FeaturedProjects = () => {
     return (
-        <section className="py-16">
-            <div className="mb-12 space-y-4">
-                <div className="inline-flex items-center rounded-full border border-zinc-800 bg-zinc-900/50 px-3 py-1 text-xs text-zinc-400">
-                    PORTFOLIO
+        <section className="py-16 px-6">
+            <div className="max-w-6xl mx-auto">
+                <div className="mb-12 space-y-4">
+                    <div className="inline-flex items-center rounded-full border border-zinc-800 bg-zinc-900/50 px-3 py-1 text-xs text-zinc-400">
+                        PORTFOLIO
+                    </div>
+                    <h2 className="text-3xl md:text-4xl font-bold text-white">
+                        Featured <span className="text-transparent bg-clip-text bg-linear-to-r from-purple-400 to-pink-600">Projects</span>
+                    </h2>
+                    <p className="text-zinc-400 max-w-2xl">
+                        A selection of projects I&apos;ve built. Each one taught me something new.
+                    </p>
                 </div>
-                <h2 className="text-3xl md:text-4xl font-bold text-white">
-                    Featured <span className="text-transparent bg-clip-text bg-linear-to-r from-purple-400 to-pink-600">Projects</span>
-                </h2>
-                <p className="text-zinc-400 max-w-2xl">
-                    A selection of projects I&apos;ve built. Each one taught me something new.
-                </p>
-            </div>
 
-            {/* Vertical Project List */}
-            <div className="flex flex-col gap-6">
-                {projects.map((project, index) => (
-                    <motion.div
-                        key={project.title}
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: index * 0.1 }}
-                        className="group relative p-6 md:p-8 rounded-2xl border border-zinc-800 bg-zinc-900/30 hover:bg-zinc-900/50 hover:border-zinc-700 transition-all duration-300"
-                    >
-                        {/* Category Badge */}
-                        <Badge className={`absolute top-4 right-4 ${getCategoryColor(project.category)} border font-medium`}>
-                            {project.category}
-                        </Badge>
+                {/* Vertical Project List */}
+                <div className="flex flex-col gap-6">
+                    {projects.map((project, index) => (
+                        <motion.div
+                            key={project.title}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: index * 0.1 }}
+                            className="group relative p-6 md:p-8 rounded-2xl border border-zinc-800 bg-zinc-900/30 hover:bg-zinc-900/50 hover:border-zinc-700 transition-all duration-300"
+                        >
+                            {/* Category Badge */}
+                            <Badge className={`absolute top-4 right-4 ${getCategoryColor(project.category)} border font-medium`}>
+                                {project.category}
+                            </Badge>
 
-                        <div className="flex flex-col md:flex-row md:items-start gap-4 md:gap-8">
-                            <div className="flex-1">
-                                <h3 className="text-xl md:text-2xl font-bold text-white group-hover:text-primary transition-colors mb-3">
-                                    {project.title}
-                                </h3>
+                            <div className="flex flex-col md:flex-row md:items-start gap-4 md:gap-8">
+                                <div className="flex-1">
+                                    <h3 className="text-xl md:text-2xl font-bold text-white group-hover:text-primary transition-colors mb-3">
+                                        {project.title}
+                                    </h3>
 
-                                <p className="text-zinc-400 leading-relaxed mb-6">
-                                    {project.description}
-                                </p>
+                                    <p className="text-zinc-400 leading-relaxed mb-6">
+                                        {project.description}
+                                    </p>
 
-                                {/* Tech Stack */}
-                                <div className="flex flex-wrap gap-2 mb-4">
-                                    {project.stack.map((tech) => (
-                                        <Badge
-                                            key={tech}
-                                            variant="secondary"
-                                            className="bg-zinc-800 text-zinc-300 hover:bg-zinc-700 border-zinc-700 font-normal px-3"
-                                        >
-                                            {tech}
-                                        </Badge>
-                                    ))}
-                                </div>
+                                    {/* Tech Stack */}
+                                    <div className="flex flex-wrap gap-2 mb-4">
+                                        {project.stack.map((tech) => (
+                                            <Badge
+                                                key={tech}
+                                                variant="secondary"
+                                                className="bg-zinc-800 text-zinc-300 hover:bg-zinc-700 border-zinc-700 font-normal px-3"
+                                            >
+                                                {tech}
+                                            </Badge>
+                                        ))}
+                                    </div>
 
-                                {/* Links */}
-                                <div className="flex gap-4">
-                                    {project.live !== "#" && (
+                                    {/* Links */}
+                                    <div className="flex gap-4">
+                                        {project.live !== "#" && (
+                                            <Link
+                                                href={project.live}
+                                                target="_blank"
+                                                className="inline-flex items-center gap-2 text-sm text-zinc-400 hover:text-white transition-colors"
+                                            >
+                                                <ExternalLink className="h-4 w-4" />
+                                                Live Demo
+                                            </Link>
+                                        )}
                                         <Link
-                                            href={project.live}
+                                            href={project.github}
                                             target="_blank"
                                             className="inline-flex items-center gap-2 text-sm text-zinc-400 hover:text-white transition-colors"
                                         >
-                                            <ExternalLink className="h-4 w-4" />
-                                            Live Demo
+                                            <Github className="h-4 w-4" />
+                                            Source Code
                                         </Link>
-                                    )}
-                                    <Link
-                                        href={project.github}
-                                        target="_blank"
-                                        className="inline-flex items-center gap-2 text-sm text-zinc-400 hover:text-white transition-colors"
-                                    >
-                                        <Github className="h-4 w-4" />
-                                        Source Code
-                                    </Link>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </motion.div>
-                ))}
+                        </motion.div>
+                    ))}
+                </div>
             </div>
         </section>
     );
