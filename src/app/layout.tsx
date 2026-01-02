@@ -18,8 +18,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  // FIX: Added metadataBase to resolve the build warning
-  metadataBase: new URL('https://vedantsolanki.com'), // Replace with your actual domain when live
+  metadataBase: new URL('https://vedantsolanki.com'),
   title: {
     default: "Vedant Solanki | Software Developer",
     template: "%s | Vedant Solanki"
@@ -43,6 +42,8 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={`${bricolage.variable} ${geistMono.variable} font-sans antialiased bg-background text-foreground`}
+        // FIX: Added suppressHydrationWarning here to prevent Grammarly/extensions from triggering console errors
+        suppressHydrationWarning
       >
         <ThemeProvider
           attribute="class"
@@ -57,7 +58,6 @@ export default function RootLayout({
 
           <GlobalNavBar />
 
-          {/* Added a min-h-screen to ensure the footer stays at bottom on short pages */}
           <main className="min-h-screen relative z-10">
             {children}
           </main>
