@@ -68,7 +68,7 @@ export default function Hero() {
                     transition={{ duration: 0.5, delay: 0.2 }}
                     className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed"
                 >
-                    A Software Developer specializing in building high-performance web applications, autonomous agents, and scalable AI platforms.
+                    A Software Developer specializing in building high-performance web applications, autonomous agents, and scalable platforms.
                 </motion.p>
 
                 {/* Animated Subtitle */}

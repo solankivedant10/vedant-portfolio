@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 interface Project {
     title: string;
     description: string;
+    highlights?: string[]; 
     stack: string[];
     live: string;
     github: string;
@@ -17,7 +18,11 @@ const projects: Project[] = [
     {
         title: "Cloud Janitor (FinOps Agent)",
         description: "Autonomous AI agent that detects wasted cloud resources and proposes safe Terraform cleanup code. Features a human-in-the-loop approval workflow to ensure safety before destruction.",
-        stack: ["Next.js", "Gemini 1.5 Pro", "Kestra", "Terraform", "Neon DB"],
+        highlights: [
+            "AI-Powered Waste Detection using Gemini-based analysis.",
+            "Structured JSON reports with savings breakdowns via Kestra."
+        ],
+        stack: ["Next.js", "Gemini 1.5 Pro", "Kestra", "Terraform", "Cline"],
         live: "https://cloud-janitor-finops.vercel.app",
         github: "https://github.com/solankivedant10/FinOps-Agent",
         category: "AI / ML",
@@ -25,6 +30,10 @@ const projects: Project[] = [
     {
         title: "SensAI Career Coach",
         description: "Full-stack AI platform offering resume analysis and career guidance. Built with an event-driven architecture using Inngest to handle complex AI workflows asynchronously.",
+        highlights: [
+            "Generates tailored career documents using LLMs.",
+            "Interview Preparation Module with adaptive feedback loops."
+        ],
         stack: ["Next.js", "Neon DB", "Prisma", "Inngest", "Shadcn UI"],
         live: "#",
         github: "https://github.com/solankivedant10/SensAI",
@@ -33,6 +42,10 @@ const projects: Project[] = [
     {
         title: "RAG Resume Analyzer",
         description: "Cost-effective document analysis tool. Uses local embeddings (BAAI/bge-small) to chat with PDFs without hitting API rate limits, with Gemini handling the reasoning.",
+        highlights: [
+            "Local Embeddings: Zero API costs for processing documents.",
+            "Built on LlamaIndex for robust document indexing."
+        ],
         stack: ["Streamlit", "LlamaIndex", "Gemini API", "Python"],
         live: "#",
         github: "https://github.com/solankivedant10/rag-resume-analyzer",
@@ -40,7 +53,11 @@ const projects: Project[] = [
     },
     {
         title: "Talent Recommender",
-        description: "Semantic search engine that matches candidates to job postings. Uses vector embeddings to understand context and LLMs to generate 'Why this match?' explanations.",
+        description: "Semantic search engine that matches candidates to job postings. Uses vector embeddings to understand context and LLMs to generate explanations.",
+        highlights: [
+            "Prototype AI-driven talent recommendation engine.",
+            "Rankings based on bio, rates, and semantic embeddings."
+        ],
         stack: ["FastAPI", "React", "Sentence Transformers", "Vector Search"],
         live: "#",
         github: "https://github.com/solankivedant10/Talent-Recommender-LLM",
@@ -79,33 +96,43 @@ export const FeaturedProjects = () => {
                     </p>
                 </div>
 
-                {/* Vertical Project List */}
                 <div className="flex flex-col gap-6">
                     {projects.map((project, index) => (
                         <motion.div
                             key={project.title}
                             initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
                             transition={{ delay: index * 0.1 }}
                             className="group relative p-6 md:p-8 rounded-2xl border border-zinc-800 bg-zinc-900/30 hover:bg-zinc-900/50 hover:border-zinc-700 transition-all duration-300"
                         >
-                            {/* Category Badge */}
                             <Badge className={`absolute top-4 right-4 ${getCategoryColor(project.category)} border font-medium`}>
                                 {project.category}
                             </Badge>
 
                             <div className="flex flex-col md:flex-row md:items-start gap-4 md:gap-8">
                                 <div className="flex-1">
-                                    <h3 className="text-xl md:text-2xl font-bold text-white group-hover:text-primary transition-colors mb-3">
+                                    <h3 className="text-xl md:text-2xl font-bold text-white group-hover:text-purple-400 transition-colors mb-3">
                                         {project.title}
                                     </h3>
 
-                                    <p className="text-zinc-400 leading-relaxed mb-6">
+                                    <p className="text-zinc-400 leading-relaxed mb-4">
                                         {project.description}
                                     </p>
 
-                                    {/* Tech Stack */}
-                                    <div className="flex flex-wrap gap-2 mb-4">
+                                    {/* --- RENDER HIGHLIGHTS HERE --- */}
+                                    {project.highlights && project.highlights.length > 0 && (
+                                        <ul className="mb-6 space-y-2">
+                                            {project.highlights.map((highlight, i) => (
+                                                <li key={i} className="flex items-start gap-2 text-sm text-zinc-400">
+                                                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-purple-500/60" />
+                                                    {highlight}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    )}
+
+                                    <div className="flex flex-wrap gap-2 mb-6">
                                         {project.stack.map((tech) => (
                                             <Badge
                                                 key={tech}
@@ -117,7 +144,6 @@ export const FeaturedProjects = () => {
                                         ))}
                                     </div>
 
-                                    {/* Links */}
                                     <div className="flex gap-4">
                                         {project.live !== "#" && (
                                             <Link

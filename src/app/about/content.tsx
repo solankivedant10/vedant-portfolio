@@ -105,8 +105,6 @@ export default function AboutContent() {
                         </div>
                     </motion.div>
 
-                    <Separator className="my-16" />
-
                     {/* Why Hire Me Section */}
                     <div ref={whyRef}>
                         <motion.div

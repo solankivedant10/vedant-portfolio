@@ -3,7 +3,7 @@ import AboutContent from './content'
 
 export const metadata: Metadata = {
     title: "About | Vedant Solanki",
-    description: "My journey from engineering student to Software Developer."
+    description: "My journey as a Software Developer."
 }
 
 export default function AboutPage() {

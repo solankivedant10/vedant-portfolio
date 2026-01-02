@@ -23,11 +23,6 @@ export default function Home() {
       {/* Tech Stack */}
       <TechStack />
 
-      {/* About Section */}
-      <section id="about" className="relative">
-        <AboutContent />
-      </section>
-
       {/* Experience Section */}
       <section id="experience">
         <Experience />
@@ -41,6 +36,11 @@ export default function Home() {
       {/* The Garage */}
       <section id="garage">
         <GarageContent />
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="relative">
+        <AboutContent />
       </section>
 
       {/* Call to Action */}
