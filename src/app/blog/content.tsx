@@ -6,7 +6,6 @@ import { motion, useInView } from 'framer-motion'
 import { Calendar, Clock, ArrowRight } from 'lucide-react'
 import { Card, CardHeader, CardContent, CardFooter } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { NewsletterForm } from '@/components/NewsletterForm'
 
 import { getAllPosts, hasPosts } from '@/lib/blog-data'
 
@@ -112,11 +111,6 @@ export default function BlogContent() {
                         </motion.div>
                     )}
                 </div>
-
-                {/* Newsletter Section */}
-                <section className="mt-24">
-                    <NewsletterForm />
-                </section>
             </main>
         </div>
     )

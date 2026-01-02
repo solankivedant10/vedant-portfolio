@@ -16,7 +16,7 @@ const techStack = [
 
     // Frontend
     { name: 'React', category: 'Frontend', color: '#61DAFB' },       // Cyan
-    { name: 'Next.js', category: 'Frontend', color: '#ffffff' },     // White (since bg is dark)
+    { name: 'Next.js', category: 'Frontend', color: '#ffffff' },     // White
     { name: 'Tailwind CSS', category: 'Frontend', color: '#38B2AC' },// Teal
     { name: 'Framer Motion', category: 'Frontend', color: '#E902B5' },// Pink
     { name: 'HTML5', category: 'Frontend', color: '#E34F26' },       // Orange
@@ -42,7 +42,7 @@ const techStack = [
 ]
 
 export function Skills() {
-    const sectionRef = useRef(null)
+    const sectionRef = useRef<HTMLDivElement>(null)
     const isInView = useInView(sectionRef, { once: true, margin: "-100px" })
 
     return (
@@ -123,5 +123,3 @@ export function Skills() {
         </section>
     )
 }
-
-export default Skills

@@ -14,12 +14,12 @@ const socials = [
 ]
 
 export function Contact() {
-    const sectionRef = useRef(null)
+    const sectionRef = useRef<HTMLDivElement>(null)
     const isInView = useInView(sectionRef, { once: true, margin: "-100px" })
 
     useEffect(() => {
         (async function () {
-            const cal = await getCalApi({ namespace: "secret" })
+            const cal = await getCalApi({ namespace: "15min" })
             cal("ui", { hideEventTypeDetails: false, layout: "month_view" })
         })()
     }, [])
@@ -61,8 +61,8 @@ export function Contact() {
                                     Schedule a 15-minute intro call to discuss your project.
                                 </p>
                                 <Button
-                                    data-cal-namespace="secret"
-                                    data-cal-link="anikethpawar/secret"
+                                    data-cal-namespace="15min"
+                                    data-cal-link="vedant-solanki/15min" // FIXED: Pointing to your handle
                                     data-cal-config='{"layout":"month_view"}'
                                     variant="outline"
                                     className="w-full gap-2"
@@ -115,5 +115,3 @@ export function Contact() {
         </section>
     )
 }
-
-export default Contact

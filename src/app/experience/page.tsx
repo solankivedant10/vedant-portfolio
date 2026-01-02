@@ -1,6 +1,5 @@
 import { Metadata } from "next";
 import GitHubHeatmap from "@/components/GitHubHeatmap";
-import { TechStack } from "@/components/TechStack";
 import { Badge } from "@/components/ui/badge";
 
 export const metadata: Metadata = {
@@ -75,11 +74,6 @@ export default function ExperiencePage() {
                         ))}
                     </div>
                 </section>
-
-                {/* Tech Stack Reuse */}
-                <div className="-mx-4 md:mx-0">
-                    <TechStack />
-                </div>
 
                 {/* GitHub Heatmap */}
                 <section className="space-y-6">

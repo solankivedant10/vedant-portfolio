@@ -57,19 +57,21 @@ const config: Config = {
                 md: 'calc(var(--radius) - 2px)',
                 sm: 'calc(var(--radius) - 4px)'
             },
+            // UPDATED ANIMATIONS SECTION
             animation: {
-                marquee: "marquee 40s linear infinite",
-                marquee2: "marquee2 40s linear infinite",
+                marquee: "marquee var(--duration) linear infinite",
+                "marquee-vertical": "marquee-vertical var(--duration) linear infinite",
                 blob: "blob 7s infinite",
             },
+            // UPDATED KEYFRAMES SECTION
             keyframes: {
                 marquee: {
-                    "0%": { transform: "translateX(0%)" },
-                    "100%": { transform: "translateX(-100%)" },
+                    from: { transform: "translateX(0)" },
+                    to: { transform: "translateX(calc(-100% - var(--gap)))" },
                 },
-                marquee2: {
-                    "0%": { transform: "translateX(100%)" },
-                    "100%": { transform: "translateX(0%)" },
+                "marquee-vertical": {
+                    from: { transform: "translateY(0)" },
+                    to: { transform: "translateY(calc(-100% - var(--gap)))" },
                 },
                 blob: {
                     "0%": { transform: "translate(0px, 0px) scale(1)" },

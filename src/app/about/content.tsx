@@ -104,12 +104,7 @@ export default function AboutContent() {
                                 </a>
                             </Button>
                         </div>
-                    </motion.div>
-
-                    <Separator className="my-16" />
-
-                    {/* Skills Section */}
-                    <Skills />
+                    </motion.div>          
 
                     <Separator className="my-16" />
 

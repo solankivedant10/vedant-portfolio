@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { Bricolage_Grotesque, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { NavBar } from "@/components/ui/tubelight-navbar";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import Footer from "@/components/Footer";
+// FIX 1: Import GlobalNavBar (which holds your links), NOT NavBar
+import { GlobalNavBar } from "@/components/GlobalNavBar";
 
 const bricolage = Bricolage_Grotesque({
   variable: "--font-bricolage",
@@ -44,10 +46,12 @@ export default function RootLayout({
           <div className="fixed inset-0 grid-bg pointer-events-none -z-10" />
           <div className="viewport-glow" />
 
-          {/* Fixed: No props passed, preventing serialization error */}
-          <NavBar />
+          {/* FIX 2: Use GlobalNavBar. This component passes the 'items' prop automatically. */}
+          <GlobalNavBar />
 
           {children}
+
+          <Footer />
         </ThemeProvider>
       </body>
     </html>

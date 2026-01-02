@@ -1,6 +1,7 @@
 "use client"
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { ArrowUpRight, Calendar } from "lucide-react"
+import { getCalApi } from "@calcom/embed-react"
 
 export function LetsWorkTogether() {
     const [isHovered, setIsHovered] = useState(false)
@@ -8,16 +9,23 @@ export function LetsWorkTogether() {
     const [showSuccess, setShowSuccess] = useState(false)
     const [isButtonHovered, setIsButtonHovered] = useState(false)
 
+    // Initialize Cal.com API
+    useEffect(() => {
+        (async function () {
+            const cal = await getCalApi({ namespace: "15min" })
+            cal("ui", { hideEventTypeDetails: false, layout: "month_view" })
+        })()
+    }, [])
+
     const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
         e.preventDefault()
         setIsClicked(true)
         setTimeout(() => setShowSuccess(true), 500)
     }
 
-    const handleBookCall = () => {
-        window.open("https://cal.com/solanki-vedant-qhzoml", "_blank")
-    }
-
+    // Updated: Now uses the dataset attributes to trigger the modal automatically
+    // No explicit onClick handler needed for Cal.com when data-cal-link is present
+    
     return (
         <section id="contact" className="flex min-h-[50vh] items-center justify-center px-6 py-24">
             <div className="relative flex flex-col items-center gap-12 w-full max-w-4xl mx-auto">
@@ -34,8 +42,12 @@ export function LetsWorkTogether() {
                         <span className="text-xs font-medium tracking-[0.3em] uppercase text-muted-foreground">Perfect</span>
                         <h3 className="text-3xl font-light tracking-tight text-foreground sm:text-4xl">Let&apos;s talk</h3>
                     </div>
+                    
+                    {/* Updated Button with Cal.com Attributes */}
                     <button
-                        onClick={handleBookCall}
+                        data-cal-namespace="15min"
+                        data-cal-link="solanki-vedant-qhzoml" // ENSURE THIS MATCHES HERO.TSX
+                        data-cal-config='{"layout":"month_view"}'
                         onMouseEnter={() => setIsButtonHovered(true)}
                         onMouseLeave={() => setIsButtonHovered(false)}
                         className="group relative flex items-center gap-4 cursor-pointer"

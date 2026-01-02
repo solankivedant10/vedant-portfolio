@@ -1,13 +1,22 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowRight, Github, Linkedin, Mail, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { BookingModal } from "@/components/BookingModal";
+import { getCalApi } from "@calcom/embed-react";
 import { Typewriter } from "@/components/ui/typewriter";
+import { AnimatedText } from "@/components/ui/animated-underline-text-one";
 
 export default function Hero() {
+    // Initialize Cal.com embed
+    useEffect(() => {
+        (async function () {
+            const cal = await getCalApi({ namespace: "15min" });
+            cal("ui", { hideEventTypeDetails: false, layout: "month_view" });
+        })();
+    }, []);
+
     return (
         <section className="relative flex flex-col items-center justify-center min-h-[90vh] px-4 pt-32 pb-20 overflow-hidden">
 
@@ -59,9 +68,22 @@ export default function Hero() {
                     transition={{ duration: 0.5, delay: 0.2 }}
                     className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed"
                 >
-                    A final-year engineering student turning ideas into reality through code.
-                    From building autonomous cloud agents to AI-powered career platforms, I craft solutions that matter.
+                    A Software Developer specializing in building high-performance web applications, autonomous agents, and scalable AI platforms.
                 </motion.p>
+
+                {/* Animated Subtitle */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.25 }}
+                >
+                    <AnimatedText
+                        text="Software Developer & AI Enthusiast"
+                        textClassName="text-xl md:text-2xl font-semibold text-foreground/80"
+                        underlineClassName="text-purple-500"
+                        underlineDuration={1.8}
+                    />
+                </motion.div>
 
                 {/* Buttons & Socials */}
                 <motion.div
@@ -71,10 +93,18 @@ export default function Hero() {
                     className="flex flex-col sm:flex-row gap-6 items-center justify-center"
                 >
                     <div className="flex gap-4">
-                        <BookingModal
-                            calLink="solanki-vedant-qhzoml"
-                            buttonClassName="rounded-full px-8 text-base h-12 bg-primary text-primary-foreground hover:bg-primary/90"
-                        />
+                        {/* Replaced BookingModal with Direct Cal.com Button */}
+                        <Button
+                            data-cal-namespace="15min"
+                            data-cal-link="solanki-vedant-qhzoml" // Using the handle from your snippet
+                            data-cal-config='{"layout":"month_view"}'
+                            size="lg"
+                            className="rounded-full px-8 text-base h-12 bg-primary text-primary-foreground hover:bg-primary/90"
+                        >
+                            <Calendar className="mr-2 h-4 w-4" />
+                            Book a call
+                        </Button>
+
                         <Button asChild variant="outline" size="lg" className="rounded-full px-8 text-base h-12 bg-background/50 backdrop-blur-sm hover:bg-background/80">
                             <Link href="/projects">
                                 View my work <ArrowRight className="ml-2 h-4 w-4" />
@@ -107,11 +137,11 @@ export default function Hero() {
                         <p className="text-sm text-muted-foreground mt-1">Months Experience</p>
                     </div>
                     <div>
-                        <h4 className="text-3xl font-bold text-foreground">4+</h4>
+                        <h4 className="text-3xl font-bold text-foreground">5+</h4>
                         <p className="text-sm text-muted-foreground mt-1">Projects Shipped</p>
                     </div>
                     <div>
-                        <h4 className="text-3xl font-bold text-foreground">500+</h4>
+                        <h4 className="text-3xl font-bold text-foreground">50+</h4>
                         <p className="text-sm text-muted-foreground mt-1">GitHub Contributions</p>
                     </div>
                 </motion.div>

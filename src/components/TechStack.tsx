@@ -1,58 +1,79 @@
 "use client";
 
 import Image from "next/image";
+import { Marquee, MarqueeItem } from "@/components/ui/marquee";
 
 const techStack = [
-    // Languages
-    { name: "JavaScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
-    { name: "TypeScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
-    { name: "Python", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
-
-    // Frameworks
-    { name: "React", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
-    { name: "Next.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
-    { name: "Tailwind CSS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
-
-    // Backend & Cloud
-    { name: "Node.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
-    { name: "Supabase", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg" },
-    { name: "PostgreSQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" },
-    { name: "Docker", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
-    { name: "AWS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg" },
-    { name: "Git", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
+    { name: "JavaScript", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/javascript.svg" },
+    { name: "TypeScript", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/typescript.svg" },
+    { name: "React", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/react.svg" },
+    { name: "Next.js", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/nextdotjs.svg" },
+    { name: "Node.js", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/nodedotjs.svg" },
+    { name: "Python", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/python.svg" },
+    { name: "TailwindCSS", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/tailwindcss.svg" },
+    { name: "PostgreSQL", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/postgresql.svg" },
+    { name: "MongoDB", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/mongodb.svg" },
+    { name: "AWS", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/amazonaws.svg" },
+    { name: "Docker", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/docker.svg" },
+    { name: "Git", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/git.svg" },
+    { name: "Prisma", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/prisma.svg" },
+    { name: "Vercel", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/vercel.svg" },
 ];
 
 export function TechStack() {
     return (
-        <section className="py-20 px-4">
-            <div className="max-w-5xl mx-auto">
-                <div className="text-center mb-12">
-                    <h2 className="text-sm font-semibold text-muted-foreground tracking-widest uppercase mb-4">
-                        Tools I Work With
-                    </h2>
+        <section className="py-24 overflow-hidden bg-background">
+            <div className="max-w-7xl mx-auto px-6 mb-12 text-center">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary/50 border border-border mb-4">
+                    <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
+                        Tech Stack
+                    </span>
                 </div>
+                <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+                    Tools I Work With
+                </h2>
+            </div>
 
-                {/* Static Grid */}
-                <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-4">
+            <div className="relative flex flex-col gap-8">
+                {/* Fade edges */}
+                <div className="absolute left-0 top-0 bottom-0 w-20 bg-linear-to-r from-background to-transparent z-10 pointer-events-none" />
+                <div className="absolute right-0 top-0 bottom-0 w-20 bg-linear-to-l from-background to-transparent z-10 pointer-events-none" />
+
+                {/* Row 1: Forward */}
+                <Marquee pauseOnHover className="[--duration:40s] [--gap:3rem]">
                     {techStack.map((tech) => (
-                        <div
-                            key={tech.name}
-                            className="group flex flex-col items-center justify-center p-4 rounded-xl bg-zinc-900/50 border border-zinc-800 hover:border-zinc-600 hover:bg-zinc-800/50 hover:scale-105 hover:-translate-y-1 transition-all duration-300 cursor-default"
-                        >
-                            <div className="relative h-8 w-8 mb-2">
-                                <Image
-                                    src={tech.icon}
-                                    alt={tech.name}
-                                    fill
-                                    className="object-contain opacity-80 group-hover:opacity-100 transition-opacity"
-                                />
-                            </div>
-                            <span className="text-xs font-medium text-zinc-500 group-hover:text-white transition-colors text-center">
+                        <MarqueeItem key={tech.name} className="gap-3">
+                            <Image
+                                src={tech.icon}
+                                alt={tech.name}
+                                width={24}
+                                height={24}
+                                className="h-8 w-8 invert opacity-80"
+                            />
+                            <span className="text-lg font-medium text-muted-foreground whitespace-nowrap">
                                 {tech.name}
                             </span>
-                        </div>
+                        </MarqueeItem>
                     ))}
-                </div>
+                </Marquee>
+
+                {/* Row 2: Reverse */}
+                <Marquee reverse pauseOnHover className="[--duration:45s] [--gap:3rem]">
+                    {techStack.slice().reverse().map((tech) => (
+                        <MarqueeItem key={tech.name} className="gap-3">
+                            <Image
+                                src={tech.icon}
+                                alt={tech.name}
+                                width={24}
+                                height={24}
+                                className="h-8 w-8 invert opacity-80"
+                            />
+                            <span className="text-lg font-medium text-muted-foreground whitespace-nowrap">
+                                {tech.name}
+                            </span>
+                        </MarqueeItem>
+                    ))}
+                </Marquee>
             </div>
         </section>
     );

@@ -1,188 +1,222 @@
-"use client"
+'use client'
 
-import React, { useEffect, useState } from "react"
-import { motion } from "framer-motion"
-import Link from "next/link"
-import { Home, Briefcase, FileCode, Wrench, Mail, Menu, BookOpen } from "lucide-react"
-import { cn } from "@/lib/utils"
-import { usePathname } from "next/navigation"
-import {
-    Sheet,
-    SheetContent,
-    SheetHeader,
-    SheetTitle,
-    SheetTrigger,
-    SheetClose,
-} from "@/components/ui/sheet"
-import { Button } from "@/components/ui/button"
+import { useState, useEffect } from 'react'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { motion } from 'framer-motion'
+import { Menu, X, Github, Linkedin, Mail } from 'lucide-react'
+import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet'
+import { Button } from '@/components/ui/button'
+import { Separator } from '@/components/ui/separator'
 
-const navItems = [
-    { name: "Home", url: "/", icon: Home },
-    { name: "Projects", url: "/projects", icon: FileCode },
-    { name: "Experience", url: "/experience", icon: Briefcase },
-    { name: "Garage", url: "/garage", icon: Wrench },
-    { name: "Blog", url: "/blog", icon: BookOpen },
-    { name: "Contact", url: "/contact", icon: Mail },
-]
-
-interface NavBarProps {
-    className?: string
+// 1. Define Props to match GlobalNavbar
+interface NavItem {
+    name: string
+    url: string
+    icon?: any
 }
 
-export function NavBar({ className }: NavBarProps) {
-    const pathname = usePathname()
-    const [isMounted, setIsMounted] = useState(false)
-    const [isOpen, setIsOpen] = useState(false)
+interface NavBarProps {
+    items: NavItem[]
+}
 
+const socials = [
+    { name: 'GitHub', href: 'https://github.com/solankivedant10', icon: Github },
+    { name: 'LinkedIn', href: 'https://www.linkedin.com/in/vedants01', icon: Linkedin },
+    { name: 'Email', href: 'mailto:vedants1968@gmail.com', icon: Mail },
+]
+
+export function NavBar({ items }: NavBarProps) {
+    const [time, setTime] = useState<Date | null>(null)
+    const [isOpen, setIsOpen] = useState(false)
+    const pathname = usePathname()
+
+    // Hydration-safe time update
     useEffect(() => {
-        // eslint-disable-next-line react-hooks/set-state-in-effect -- Hydration check pattern
-        setIsMounted(true)
+        const handle = requestAnimationFrame(() => setTime(new Date()))
+        const timer = setInterval(() => setTime(new Date()), 1000)
+        return () => {
+            cancelAnimationFrame(handle)
+            clearInterval(timer)
+        }
     }, [])
 
-    // Close sheet when route changes
+    // Close mobile menu on route change
     useEffect(() => {
-        // eslint-disable-next-line react-hooks/set-state-in-effect -- Route change side effect
-        setIsOpen(false)
+        if (isOpen) {
+            setIsOpen(false)
+        }
     }, [pathname])
 
-    if (!isMounted) return null
+    const formatDate = () => {
+        if (!time) return ''
+        return time.toLocaleDateString('en-US', {
+            weekday: 'short',
+            month: 'short',
+            day: 'numeric',
+            year: 'numeric'
+        })
+    }
+
+    const formatTime = () => {
+        if (!time) return ''
+        return time.toLocaleTimeString('en-US', {
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: true
+        })
+    }
+
+    // Safety check
+    if (!items || items.length === 0) return null;
 
     return (
-        <>
-            {/* Desktop Navbar */}
-            <div className={cn("fixed bottom-0 sm:top-0 left-1/2 -translate-x-1/2 z-9999 mb-6 sm:pt-6 w-full sm:w-auto px-4 sm:px-0 hidden sm:block", className)}>
-                <div className="flex items-center gap-1 bg-zinc-950/90 border border-white/10 backdrop-blur-md py-2 px-2 rounded-xl shadow-lg">
-
-                    {navItems.map((item) => {
-                        const isActive = item.url === pathname || (item.url !== "/" && pathname.startsWith(item.url));
-                        const isGarage = item.name === "Garage"
-
-                        return (
-                            <Link
-                                key={item.name}
-                                href={item.url}
-                                className={cn(
-                                    "relative cursor-pointer text-sm font-medium px-4 py-2 rounded-lg transition-colors",
-                                    "text-zinc-400 hover:text-white",
-                                    isActive && "text-white"
-                                )}
-                            >
-                                <span className="hidden md:inline">{item.name}</span>
-                                <span className="md:hidden">
-                                    <item.icon size={18} strokeWidth={2.5} />
-                                </span>
-
-                                {isGarage && (
-                                    <span className="ml-1 hidden md:inline-block text-xs">🛠️</span>
-                                )}
-
-                                {isActive && (
-                                    <motion.div
-                                        layoutId="active-pill"
-                                        className="absolute inset-0 w-full bg-zinc-800 rounded-lg -z-10"
-                                        transition={{
-                                            type: "spring",
-                                            stiffness: 400,
-                                            damping: 30,
-                                        }}
-                                    />
-                                )}
-                            </Link>
-                        )
-                    })}
-
-                    <div className="hidden sm:block w-px h-6 bg-white/10 mx-1" />
-
-                    <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-500/10 border border-green-500/20">
-                        <span className="relative flex h-2 w-2">
-                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
-                            <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-                        </span>
-                        <span className="text-xs font-medium text-green-500 whitespace-nowrap">Available</span>
-                    </div>
-
-                </div>
-            </div>
-
-            {/* Mobile Navbar */}
-            <div className="fixed bottom-0 left-0 right-0 z-9999 p-4 sm:hidden">
-                <div className="flex items-center justify-between bg-zinc-950/95 border border-white/10 backdrop-blur-md py-3 px-4 rounded-2xl shadow-lg">
-
-                    {/* Logo/Brand */}
-                    <Link href="/" className="text-white font-bold text-lg">
-                        VS
+        <motion.header
+            initial={{ y: -20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            className="fixed top-0 left-0 right-0 z-9999"
+        >
+            <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
+                <nav className="flex items-center justify-between px-3 sm:px-4 py-2 rounded-xl bg-background/80 backdrop-blur-md border border-white/10 shadow-lg">
+                    
+                    {/* Logo / Name */}
+                    <Link href="/" className="flex items-center gap-2 sm:gap-3">
+                        <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-white flex items-center justify-center">
+                            <span className="text-black font-bold text-xs sm:text-sm">VS</span>
+                        </div>
+                        <div className="hidden sm:block">
+                            <p className="text-sm font-medium text-white">Vedant Solanki</p>
+                            <p className="text-[10px] text-muted-foreground font-mono">
+                                {formatDate()} • {formatTime()}
+                            </p>
+                        </div>
                     </Link>
 
-                    {/* Center: Available Badge */}
-                    <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-green-500/10 border border-green-500/20">
-                        <span className="relative flex h-2 w-2">
-                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
-                            <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-                        </span>
-                        <span className="text-xs font-medium text-green-500">Available</span>
+                    {/* Desktop Navigation */}
+                    <div className="hidden md:flex items-center gap-1">
+                        {items.map((item) => {
+                            const isActive = item.url === '/' 
+                                ? pathname === '/' 
+                                : pathname.startsWith(item.url)
+                            
+                            const isGarage = item.name === 'Garage'
+
+                            return (
+                                <Link
+                                    key={item.url}
+                                    href={item.url}
+                                    className={`px-3 py-1.5 rounded-md text-sm transition-colors ${
+                                        isActive
+                                            ? 'text-white bg-secondary'
+                                            : isGarage
+                                                ? 'text-indigo-400 hover:text-indigo-300 hover:bg-secondary/50'
+                                                : 'text-muted-foreground hover:text-white hover:bg-secondary/50'
+                                    }`}
+                                >
+                                    {item.name} {isGarage && '🔧'}
+                                </Link>
+                            )
+                        })}
+
+                        <Separator orientation="vertical" className="h-5 mx-2 bg-border" />
+
+                        <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20">
+                            <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse" />
+                            <span className="text-xs text-emerald-400 font-medium">Available</span>
+                        </div>
                     </div>
 
-                    {/* Right: Menu */}
-                    <div className="flex items-center gap-2">
-
-                        <Sheet open={isOpen} onOpenChange={setIsOpen}>
-                            <SheetTrigger asChild>
-                                <Button
-                                    variant="ghost"
-                                    size="icon"
-                                    className="h-9 w-9 text-zinc-400 hover:text-white hover:bg-zinc-800"
-                                    aria-label="Open navigation menu"
-                                >
-                                    <Menu className="h-5 w-5" />
-                                </Button>
-                            </SheetTrigger>
-                            <SheetContent side="bottom" className="bg-zinc-950 border-zinc-800 rounded-t-3xl">
-                                <SheetHeader className="sr-only">
-                                    <SheetTitle>Navigation Menu</SheetTitle>
-                                </SheetHeader>
-
-                                {/* Drag Handle */}
-                                <div className="flex justify-center pt-2 pb-4">
-                                    <div className="w-12 h-1 bg-zinc-700 rounded-full" />
+                    {/* Mobile Menu Trigger */}
+                    <Sheet open={isOpen} onOpenChange={setIsOpen}>
+                        <SheetTrigger asChild>
+                            <Button
+                                variant="ghost"
+                                size="icon"
+                                className="md:hidden text-muted-foreground hover:text-white"
+                            >
+                                <Menu className="h-5 w-5" />
+                                <span className="sr-only">Toggle menu</span>
+                            </Button>
+                        </SheetTrigger>
+                        <SheetContent side="right" className="w-[280px] bg-zinc-950 border-l border-zinc-800 p-0">
+                            <div className="flex flex-col h-full">
+                                {/* Mobile Header */}
+                                <div className="flex items-center justify-between p-4 border-b border-zinc-800">
+                                    <div>
+                                        <p className="text-sm font-medium text-white">Menu</p>
+                                        <p className="text-[10px] text-muted-foreground font-mono">{formatTime()}</p>
+                                    </div>
+                                    <SheetClose asChild>
+                                        <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-white">
+                                            <X className="h-5 w-5" />
+                                        </Button>
+                                    </SheetClose>
                                 </div>
 
-                                {/* Navigation Links */}
-                                <nav className="flex flex-col gap-2 px-2 pb-8">
-                                    {navItems.map((item) => {
-                                        const isActive = item.url === pathname || (item.url !== "/" && pathname.startsWith(item.url));
+                                {/* Mobile Links */}
+                                <nav className="flex-1 p-4">
+                                    <div className="space-y-1">
+                                        {items.map((item, index) => {
+                                            const isActive = item.url === '/' 
+                                                ? pathname === '/' 
+                                                : pathname.startsWith(item.url)
+                                            
+                                            const isGarage = item.name === 'Garage'
 
-                                        return (
-                                            <SheetClose asChild key={item.name}>
-                                                <Link
-                                                    href={item.url}
-                                                    className={cn(
-                                                        "flex items-center gap-4 px-4 py-4 rounded-xl transition-colors",
-                                                        "text-zinc-300 hover:bg-zinc-900 hover:text-white",
-                                                        isActive && "bg-zinc-800 text-white"
-                                                    )}
+                                            return (
+                                                <motion.div
+                                                    key={item.url}
+                                                    initial={{ opacity: 0, x: 20 }}
+                                                    animate={{ opacity: 1, x: 0 }}
+                                                    transition={{ delay: index * 0.05 }}
                                                 >
-                                                    <item.icon className="h-5 w-5" />
-                                                    <span className="text-base font-medium">{item.name}</span>
-                                                    {item.name === "Garage" && (
-                                                        <span className="text-sm">🛠️</span>
-                                                    )}
-                                                </Link>
-                                            </SheetClose>
-                                        )
-                                    })}
+                                                    <SheetClose asChild>
+                                                        <Link
+                                                            href={item.url}
+                                                            className={`block px-4 py-3 rounded-lg text-sm transition-colors ${
+                                                                isActive
+                                                                    ? 'bg-secondary text-white'
+                                                                    : isGarage
+                                                                        ? 'text-indigo-400 hover:text-indigo-300 hover:bg-secondary/50'
+                                                                        : 'text-muted-foreground hover:text-white hover:bg-secondary/50'
+                                                            }`}
+                                                        >
+                                                            {item.name} {isGarage && '🔧'}
+                                                        </Link>
+                                                    </SheetClose>
+                                                </motion.div>
+                                            )
+                                        })}
+                                    </div>
                                 </nav>
 
-                                {/* Footer */}
-                                <div className="border-t border-zinc-800 pt-4 px-4">
-                                    <p className="text-xs text-zinc-500 text-center">
-                                        © 2025 Vedant Solanki
-                                    </p>
+                                {/* Mobile Footer */}
+                                <div className="p-4 border-t border-zinc-800">
+                                    <div className="flex items-center justify-center gap-1.5 px-3 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20">
+                                        <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse" />
+                                        <span className="text-xs text-emerald-400 font-medium">Available for work</span>
+                                    </div>
+
+                                    <div className="flex justify-center gap-2 mt-4">
+                                        {socials.map((social) => (
+                                            <a
+                                                key={social.name}
+                                                href={social.href}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="p-2.5 rounded-lg text-muted-foreground hover:text-white hover:bg-secondary transition-all"
+                                            >
+                                                <social.icon className="w-5 h-5" />
+                                            </a>
+                                        ))}
+                                    </div>
                                 </div>
-                            </SheetContent>
-                        </Sheet>
-                    </div>
-                </div>
+                            </div>
+                        </SheetContent>
+                    </Sheet>
+                </nav>
             </div>
-        </>
+        </motion.header>
     )
 }

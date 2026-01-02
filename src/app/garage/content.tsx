@@ -1,10 +1,8 @@
 'use client'
 
 import { useRef } from 'react'
-
 import { motion, useInView } from 'framer-motion'
 import { ExternalLink, Rocket, Zap, BookOpen } from 'lucide-react'
-
 import { Badge } from '@/components/ui/badge'
 import { Progress } from '@/components/ui/progress'
 import { GlowingEffect } from '@/components/ui/glowing-effect'
@@ -17,7 +15,6 @@ const currentProjects = [
         status: "Completed",
         progress: 100,
         technologies: ["Kestra", "Gemini 2.5 Pro", "Terraform", "Next.js", "Cline", "Vercel"],
-        startDate: "Nov 2025",
         link: "https://github.com/solankivedant10/FinOps-Agent"
     },
     {
@@ -27,7 +24,6 @@ const currentProjects = [
         status: "Completed",
         progress: 100,
         technologies: ["Next.js", "Neon DB", "Prisma", "Inngest", "Vercel"],
-        startDate: "Jan 2025",
         link: "https://github.com/solankivedant10/SensAI"
     },
     {
@@ -37,7 +33,6 @@ const currentProjects = [
         status: "Completed",
         progress: 100,
         technologies: ["Streamlit", "LlamaIndex", "Gemini", "Python"],
-        startDate: "Dec 2025",
         link: "https://github.com/solankivedant10/rag-resume-analyzer"
     },
     {
@@ -47,7 +42,6 @@ const currentProjects = [
         status: "Completed",
         progress: 100,
         technologies: ["FastAPI", "React", "Sentence Transformers", "Vector Search"],
-        startDate: "Sept 2025",
         link: "https://github.com/solankivedant10/Talent-Recommender-LLM"
     },
     {
@@ -57,7 +51,6 @@ const currentProjects = [
         status: "Almost Done",
         progress: 90,
         technologies: ["Next.js", "TypeScript", "Tailwind", "Framer Motion"],
-        startDate: "Dec  2025",
         link: "https://github.com/solankivedant10/vedant-portfolio"
     },
     {
@@ -67,7 +60,6 @@ const currentProjects = [
         status: "Completed",
         progress: 100,
         technologies: ["Python", "Scikit-learn", "Streamlit", "Pandas"],
-        startDate: "Apr 2025",
         link: "https://github.com/solankivedant10/IPL-win_predictor"
     }
 ]
@@ -103,7 +95,7 @@ const learningItems = [
 ]
 
 export default function GarageContent() {
-    const sectionRef = useRef(null)
+    const sectionRef = useRef<HTMLDivElement>(null)
     const isInView = useInView(sectionRef, { once: true, margin: "-100px" })
 
     return (
@@ -231,7 +223,6 @@ export default function GarageContent() {
                     <div className="mt-16">
                         <div className="flex items-center gap-2 mb-8 justify-center">
                             <BookOpen className="w-5 h-5 text-muted-foreground" />
-                            {/* FIXED: Changed ' to &apos; */}
                             <h2 className="text-3xl font-bold">Currently I&apos;m learning!</h2>
                         </div>
                         <div className="grid md:grid-cols-3 gap-6">
