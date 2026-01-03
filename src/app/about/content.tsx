@@ -8,7 +8,7 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
 
 // CONSTANTS - Easy to update
-const RESUME_LINK = "https://drive.google.com/file/d/1Ra2nKCzuggAC7HkwFXEGR3mGAyJTvasR/view?usp=sharing"
+const RESUME_LINK = "https://drive.google.com/file/d/1cfM_VO6Cn7w7LGIZXsY2kkOfoE23WXhN/view?usp=sharing"
 const GITHUB_LINK = "https://github.com/solankivedant10"
 
 const highlights = [
