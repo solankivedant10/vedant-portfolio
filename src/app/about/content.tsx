@@ -8,7 +8,7 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
 
 // CONSTANTS - Easy to update
-const RESUME_LINK = "https://drive.google.com/file/d/1cfM_VO6Cn7w7LGIZXsY2kkOfoE23WXhN/view?usp=sharing"
+const RESUME_LINK = "https://drive.google.com/file/d/1Ble_BYuU4YEdO1yaLCG7Y9Q7UsNu5gIX/view?usp=sharing"
 const GITHUB_LINK = "https://github.com/solankivedant10"
 
 const highlights = [
@@ -200,7 +200,7 @@ export default function AboutContent() {
                             Check out my work
                         </h2>
                         <p className="text-muted-foreground mb-6">
-                            50+ contributions and counting. See what I&apos;m building.
+                            100+ contributions and counting. See what I&apos;m building.
                         </p>
                         <Button asChild className="gap-2">
                             <a

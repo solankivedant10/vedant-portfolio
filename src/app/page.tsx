@@ -6,11 +6,10 @@ import Experience from "@/components/Experience";
 import { LetsWorkTogether } from "@/components/ui/lets-work-section";
 
 // Reuse section content components
-import AboutContent from "@/app/about/content";
 import GarageContent from "@/app/garage/content";
 
 export const metadata: Metadata = {
-  title: "Vedant Solanki | Full Stack Developer",
+  title: "Vedant Solanki | Software Developer",
   description: "Software Developer specialized in building high-performance, secure web applications and autonomous agents.",
 };
 
@@ -36,11 +35,6 @@ export default function Home() {
       {/* The Garage */}
       <section id="garage">
         <GarageContent />
-      </section>
-
-      {/* About Section */}
-      <section id="about" className="relative">
-        <AboutContent />
       </section>
 
       {/* Call to Action */}

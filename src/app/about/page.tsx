@@ -1,11 +1,11 @@
 import { Metadata } from 'next'
-import AboutContent from './content'
+import ResumeContent from './content'
 
 export const metadata: Metadata = {
-    title: "About | Vedant Solanki",
+    title: "Resume | Vedant Solanki",
     description: "My journey as a Software Developer."
 }
 
 export default function AboutPage() {
-    return <AboutContent />
+    return <ResumeContent />
 }

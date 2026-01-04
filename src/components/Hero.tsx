@@ -141,7 +141,7 @@ export default function Hero() {
                         <p className="text-sm text-muted-foreground mt-1">Projects Shipped</p>
                     </div>
                     <div>
-                        <h4 className="text-3xl font-bold text-foreground">50+</h4>
+                        <h4 className="text-3xl font-bold text-foreground">100+</h4>
                         <p className="text-sm text-muted-foreground mt-1">GitHub Contributions</p>
                     </div>
                 </motion.div>

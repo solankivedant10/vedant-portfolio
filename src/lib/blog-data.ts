@@ -17,7 +17,7 @@ export interface BlogPost {
 export const blogPosts: BlogPost[] = [
     {
         id: 1,
-        title: "Building InfiJobs: What I Learned While Building My First Serverless AI Platform",
+        title: "Building InfiJobs: What I Learned While Building My First Project",
         excerpt:
             "Lessons from my first real project—how I handled AI-based code evaluation, database security, and performance as a junior developer.",
         date: "Jan 01, 2026",
@@ -29,7 +29,7 @@ export const blogPosts: BlogPost[] = [
             "Gemini AI",
             "Learning in Public"
         ],
-        slug: "building-infijobs-first-serverless-ai-project",
+        slug: "building-infijobs-first-project",
         featured: true,
         content: `
 
@@ -82,10 +82,7 @@ Final Thoughts
 
 Building InfiJobs pushed me to think about trade-offs rather than just code syntax. I learned to accept extra SQL complexity for better security and to optimize for simplicity over premature scaling.
 
-I am actively looking for **Software Developer** opportunities where I can apply these skills to real-world products.
-
-Let's connect! 
-[LinkedIn](https://www.google.com/search?q=https://www.linkedin.com/in/vedants01)
+I am actively looking for Software Developer opportunities where I can apply these skills to real-world products.
 
 Thanks for reading. 
 `
